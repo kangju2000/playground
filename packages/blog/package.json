@@ -17,11 +17,15 @@
     "@fontsource-variable/montserrat": "^5.0.4",
     "@fontsource/merriweather": "^5.0.3",
     "@kangju2000/design-system": "*",
+    "@vanilla-extract/css": "^1.12.0",
+    "@vanilla-extract/webpack-plugin": "^2.2.0",
     "gatsby": "^5.11.0",
+    "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-feed": "^5.11.0",
     "gatsby-plugin-image": "^3.11.0",
     "gatsby-plugin-manifest": "^5.11.0",
     "gatsby-plugin-sharp": "^5.11.0",
+    "gatsby-plugin-vanilla-extract": "^4.0.1",
     "gatsby-remark-images": "^7.11.0",
     "gatsby-remark-prismjs": "^7.11.0",
     "gatsby-remark-responsive-iframe": "^6.11.1",
@@ -33,6 +37,10 @@
     "react-dom": "^18.1.0"
   },
   "devDependencies": {
-    "prettier": "^2.8.8"
+    "@types/node": "^20.5.0",
+    "@types/react": "^18.2.20",
+    "@types/react-dom": "^18.2.7",
+    "prettier": "^3.0.1",
+    "typescript": "^5.1.6"
   }
 }
