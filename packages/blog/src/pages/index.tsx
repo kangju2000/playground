@@ -1,10 +1,9 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import Bio from "@components/Bio"
-import Layout from "@components/Layout"
-// import Seo from "@components/Seo"
+import Bio from "@/components/Bio"
+import Layout from "@/components/Layout"
 
-const BlogIndex = ({ data, location }) => {
+const BlogIndex = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
 

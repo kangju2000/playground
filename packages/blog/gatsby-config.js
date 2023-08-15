@@ -121,23 +121,6 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
-    {
-      resolve: 'gatsby-plugin-alias-imports',
-      options: {
-        alias: {
-          '@': 'src',
-          '@components': 'src/components',
-          '@styles': 'src/styles',
-          '@utils': 'src/utils',
-          '@layouts': 'src/layouts',
-          '@pages': 'src/pages',
-          '@hooks': 'src/hooks',
-          '@images': 'src/images',
-          '@types': 'src/types',
-        },
-        extensions: ['js', 'ts', 'tsx'],
-      },
-    },
     `gatsby-plugin-vanilla-extract`
   ],
 }
