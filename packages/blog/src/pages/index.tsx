@@ -3,7 +3,30 @@ import { Link, graphql } from "gatsby"
 import Bio from "@/components/Bio"
 import Layout from "@/components/Layout"
 
-const BlogIndex = ({ data }) => {
+interface BlogIndexProps {
+  data: {
+    site: {
+      siteMetadata: {
+        title: string
+      }
+    }
+    allMarkdownRemark: {
+      nodes: {
+        excerpt: string
+        fields: {
+          slug: string
+        }
+        frontmatter: {
+          date: string
+          title: string
+          description: string
+        }
+      }[]
+    }
+  }
+}
+
+const BlogIndex = ({ data }: BlogIndexProps) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
 
