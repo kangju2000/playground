@@ -4,34 +4,32 @@
  *
  * See: https://www.gatsbyjs.com/docs/how-to/querying-data/use-static-query/
  */
-import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import type { PropsWithChildren } from "react"
+import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+import type { PropsWithChildren } from 'react';
 
 interface SeoProps {
-  description?: string
-  title: string
+  description?: string;
+  title: string;
 }
 
 const Seo = ({ description, title, children }: PropsWithChildren<SeoProps>) => {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            social {
-              twitter
-            }
+  const { site } = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          title
+          description
+          social {
+            twitter
           }
         }
       }
-    `
-  )
+    }
+  `);
 
-  const metaDescription = description || site.siteMetadata.description
-  const defaultTitle = site.siteMetadata?.title
+  const metaDescription = description || site.siteMetadata.description;
+  const defaultTitle = site.siteMetadata?.title;
 
   return (
     <>
@@ -41,15 +39,12 @@ const Seo = ({ description, title, children }: PropsWithChildren<SeoProps>) => {
       <meta property="og:description" content={metaDescription} />
       <meta property="og:type" content="website" />
       <meta name="twitter:card" content="summary" />
-      <meta
-        name="twitter:creator"
-        content={site.siteMetadata?.social?.twitter || ``}
-      />
+      <meta name="twitter:creator" content={site.siteMetadata?.social?.twitter || ``} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={metaDescription} />
       {children}
     </>
-  )
-}
+  );
+};
 
-export default Seo
+export default Seo;

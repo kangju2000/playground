@@ -7,4 +7,6 @@
     }
   },
   "include": ["./src/**/*"],
+  "composite": true,
+  "declaration": true,
 }

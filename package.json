@@ -1,6 +1,11 @@
 {
   "name": "playground",
   "packageManager": "yarn@3.6.1",
+  "scripts": {
+    "design-system": "yarn workspace @design-system",
+    "blog": "yarn workspace @blog",
+    "lint": "eslint ./packages --ext .ts,.tsx,.js,.jsx --cache"
+  },
   "workspaces": [
     "packages/*"
   ],
