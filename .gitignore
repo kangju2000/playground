@@ -1,3 +1,8 @@
+**/node_modules/
+**/build/
+**/dist/
+**/__snapshots__
+
 .yarn/*
 !.yarn/patches
 !.yarn/plugins
