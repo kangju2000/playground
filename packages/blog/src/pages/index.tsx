@@ -1,6 +1,6 @@
-import React from 'react';
 import { Link, graphql } from 'gatsby';
-import Bio from '@/components/Bio';
+import React from 'react';
+
 import Layout from '@/components/Layout';
 
 interface BlogIndexProps {
@@ -33,7 +33,6 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
   if (posts.length === 0) {
     return (
       <Layout title={siteTitle}>
-        <Bio />
         <p>
           No blog posts found. Add markdown posts to "content/blog" (or the directory you specified
           for the "gatsby-source-filesystem" plugin in gatsby-config.js).
@@ -44,7 +43,6 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
 
   return (
     <Layout title={siteTitle}>
-      <Bio />
       <ol style={{ listStyle: `none` }}>
         {posts.map((post) => {
           const title = post.frontmatter.title || post.fields.slug;
@@ -78,13 +76,6 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
 };
 
 export default BlogIndex;
-
-/**
- * Head export to define metadata for the page
- *
- * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
- */
-// export const Head = () => <Seo title="All posts" />
 
 export const pageQuery = graphql`
   {

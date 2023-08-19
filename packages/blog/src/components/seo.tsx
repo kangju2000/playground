@@ -4,8 +4,9 @@
  *
  * See: https://www.gatsbyjs.com/docs/how-to/querying-data/use-static-query/
  */
-import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
+import React from 'react';
+
 import type { PropsWithChildren } from 'react';
 
 interface SeoProps {
