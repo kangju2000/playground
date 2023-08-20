@@ -1,17 +1,26 @@
+import { Link, PageProps } from 'gatsby';
 import React from 'react';
-import { type PropsWithChildren } from 'react';
 
-import Header from '../Header';
+import { header } from './index.css';
 
 interface LayoutProps {
-  title: string;
+  location?: PageProps['location'];
+  title?: string;
 }
 
-export default function Layout({ title, children }: PropsWithChildren<LayoutProps>) {
+export default function Layout({
+  location,
+  title,
+  children,
+}: React.PropsWithChildren<LayoutProps>) {
   return (
     <div>
-      <Header title={title} />
+      <header className={header}>
+        <h1>{title}</h1>
+        <Link to={location.pathname}>Home</Link>
+      </header>
       <main>{children}</main>
+      <footer></footer>
     </div>
   );
 }

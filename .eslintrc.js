@@ -29,13 +29,19 @@ module.exports = {
     'import/order': [
       'warn',
       {
+        'newlines-between': 'always',
         groups: [
           ['builtin', 'external'],
           ['internal', 'parent', 'sibling', 'index'],
           ['object'],
           ['type'],
         ],
-        'newlines-between': 'always',
+        pathGroups: [
+          {
+            pattern: '@/**',
+            group: 'internal',
+          },
+        ],
         alphabetize: {
           order: 'asc',
           caseInsensitive: true,

@@ -14,8 +14,6 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
-    "@fontsource-variable/montserrat": "^5.0.4",
-    "@fontsource/merriweather": "^5.0.3",
     "@kangju2000/design-system": "*",
     "@vanilla-extract/css": "^1.12.0",
     "@vanilla-extract/webpack-plugin": "^2.2.0",

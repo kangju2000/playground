@@ -1,9 +1,8 @@
 import { Link, graphql } from 'gatsby';
 import * as React from 'react';
 
-import Bio from '../components/bio';
-import Layout from '../components/layout';
-import Seo from '../components/seo';
+import Layout from '../components/Layout';
+import Seo from '../components/Seo';
 
 const BlogPostTemplate = ({ data: { previous, next, site, markdownRemark: post }, location }) => {
   const siteTitle = site.siteMetadata?.title || `Title`;
@@ -17,9 +16,6 @@ const BlogPostTemplate = ({ data: { previous, next, site, markdownRemark: post }
         </header>
         <section dangerouslySetInnerHTML={{ __html: post.html }} itemProp="articleBody" />
         <hr />
-        <footer>
-          <Bio />
-        </footer>
       </article>
       <nav className="blog-post-nav">
         <ul
