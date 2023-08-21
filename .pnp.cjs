@@ -3296,24 +3296,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["@fontsource-variable/montserrat", [\
-        ["npm:5.0.9", {\
-          "packageLocation": "./.yarn/cache/@fontsource-variable-montserrat-npm-5.0.9-0c77099cbc-e0a5269105.zip/node_modules/@fontsource-variable/montserrat/",\
-          "packageDependencies": [\
-            ["@fontsource-variable/montserrat", "npm:5.0.9"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["@fontsource/merriweather", [\
-        ["npm:5.0.8", {\
-          "packageLocation": "./.yarn/cache/@fontsource-merriweather-npm-5.0.8-a2cca333e7-7539ac68d2.zip/node_modules/@fontsource/merriweather/",\
-          "packageDependencies": [\
-            ["@fontsource/merriweather", "npm:5.0.8"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
       ["@gatsbyjs/parcel-namer-relative-to-cwd", [\
         ["npm:2.11.0", {\
           "packageLocation": "./.yarn/cache/@gatsbyjs-parcel-namer-relative-to-cwd-npm-2.11.0-f26bb3d336-9290ff438e.zip/node_modules/@gatsbyjs/parcel-namer-relative-to-cwd/",\
@@ -3977,8 +3959,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/blog/",\
           "packageDependencies": [\
             ["@kangju2000/blog", "workspace:packages/blog"],\
-            ["@fontsource-variable/montserrat", "npm:5.0.9"],\
-            ["@fontsource/merriweather", "npm:5.0.8"],\
             ["@kangju2000/design-system", "virtual:fb7385e026dd8d00dfa09e2f8352652f10b003ebe63b1a000b9c369233c803ded2cc0f4cbedcb747caaaf98984e2d04e79f2e57c6e648c7a09fe29594645bb2e#workspace:packages/design-system"],\
             ["@types/node", "npm:20.5.0"],\
             ["@types/react", "npm:18.2.20"],\
