@@ -1,10 +1,10 @@
 import { Link, graphql } from 'gatsby';
 import * as React from 'react';
 
-import Layout from '../components/Layout';
-import Seo from '../components/Seo';
+import Layout from '@/components/Layout';
+import Seo from '@/components/Seo';
 
-const BlogPostTemplate = ({ data: { previous, next, site, markdownRemark: post }, location }) => {
+const BlogPostTemplate = ({ previous, next, site, markdownRemark: post }, location) => {
   const siteTitle = site.siteMetadata?.title || `Title`;
 
   return (

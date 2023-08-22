@@ -3964,6 +3964,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react", "npm:18.2.20"],\
             ["@types/react-dom", "npm:18.2.7"],\
             ["@vanilla-extract/css", "npm:1.12.0"],\
+            ["@vanilla-extract/recipes", "virtual:fb7385e026dd8d00dfa09e2f8352652f10b003ebe63b1a000b9c369233c803ded2cc0f4cbedcb747caaaf98984e2d04e79f2e57c6e648c7a09fe29594645bb2e#npm:0.5.0"],\
             ["@vanilla-extract/webpack-plugin", "virtual:fb7385e026dd8d00dfa09e2f8352652f10b003ebe63b1a000b9c369233c803ded2cc0f4cbedcb747caaaf98984e2d04e79f2e57c6e648c7a09fe29594645bb2e#npm:2.2.0"],\
             ["gatsby", "virtual:fb7385e026dd8d00dfa09e2f8352652f10b003ebe63b1a000b9c369233c803ded2cc0f4cbedcb747caaaf98984e2d04e79f2e57c6e648c7a09fe29594645bb2e#npm:5.11.0"],\
             ["gatsby-plugin-alias-imports", "virtual:fb7385e026dd8d00dfa09e2f8352652f10b003ebe63b1a000b9c369233c803ded2cc0f4cbedcb747caaaf98984e2d04e79f2e57c6e648c7a09fe29594645bb2e#npm:1.0.5"],\
@@ -6119,6 +6120,28 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@vanilla-extract-private-npm-1.0.3-27ba5cf703-866a71ba68.zip/node_modules/@vanilla-extract/private/",\
           "packageDependencies": [\
             ["@vanilla-extract/private", "npm:1.0.3"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@vanilla-extract/recipes", [\
+        ["npm:0.5.0", {\
+          "packageLocation": "./.yarn/cache/@vanilla-extract-recipes-npm-0.5.0-b90613e411-a05c5be63b.zip/node_modules/@vanilla-extract/recipes/",\
+          "packageDependencies": [\
+            ["@vanilla-extract/recipes", "npm:0.5.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:fb7385e026dd8d00dfa09e2f8352652f10b003ebe63b1a000b9c369233c803ded2cc0f4cbedcb747caaaf98984e2d04e79f2e57c6e648c7a09fe29594645bb2e#npm:0.5.0", {\
+          "packageLocation": "./.yarn/__virtual__/@vanilla-extract-recipes-virtual-23febbc239/0/cache/@vanilla-extract-recipes-npm-0.5.0-b90613e411-a05c5be63b.zip/node_modules/@vanilla-extract/recipes/",\
+          "packageDependencies": [\
+            ["@vanilla-extract/recipes", "virtual:fb7385e026dd8d00dfa09e2f8352652f10b003ebe63b1a000b9c369233c803ded2cc0f4cbedcb747caaaf98984e2d04e79f2e57c6e648c7a09fe29594645bb2e#npm:0.5.0"],\
+            ["@types/vanilla-extract__css", null],\
+            ["@vanilla-extract/css", "npm:1.12.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/vanilla-extract__css",\
+            "@vanilla-extract/css"\
           ],\
           "linkType": "HARD"\
         }]\
