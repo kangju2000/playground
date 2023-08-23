@@ -8,6 +8,7 @@ globalStyle('*', {
 
 globalStyle('html, body', {
   height: '100%',
+  fontFamily: 'Noto Sans KR',
 });
 
 globalStyle('a', {

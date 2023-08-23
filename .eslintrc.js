@@ -56,7 +56,6 @@ module.exports = {
       extends: [
         'plugin:@typescript-eslint/eslint-recommended',
         'plugin:@typescript-eslint/recommended',
-        'plugin:prettier/recommended',
       ],
       parserOptions: {
         project: ['./packages/**/tsconfig.json'],
@@ -70,6 +69,9 @@ module.exports = {
             project: './packages/blog/tsconfig.json',
           },
         },
+      },
+      rules: {
+        '@typescript-eslint/no-explicit-any': 'warn',
       },
     },
     {

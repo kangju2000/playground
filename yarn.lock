@@ -2398,6 +2398,7 @@ __metadata:
     prismjs: ^1.29.0
     react: ^18.1.0
     react-dom: ^18.1.0
+    typeface-noto-sans-kr: ^1.1.13
     typescript: ^5.1.6
   languageName: unknown
   linkType: soft
@@ -3610,6 +3611,13 @@ __metadata:
   version: 20.5.0
   resolution: "@types/node@npm:20.5.0"
   checksum: 659bc5fc93b5c02bd88ca4bfae4f6b9dc307d45884d1dd9d69df85819a9943cdc00cd3c87eec3048866df6a67f52297f74d170e47a44f61edb3e8f770d94e85e
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^20.5.3":
+  version: 20.5.3
+  resolution: "@types/node@npm:20.5.3"
+  checksum: fe67a0fd7402218bdf91523a2b1c2e41d619f7294b1a471e0a778b8bc7bb3fcf291aed12041bcbe9622d50a3d1295a9adea0e7e19bb9386a246bf66071404721
   languageName: node
   linkType: hard
 
@@ -12766,6 +12774,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "playground@workspace:."
   dependencies:
+    "@types/node": ^20.5.3
     "@typescript-eslint/eslint-plugin": ^6.3.0
     "@typescript-eslint/parser": ^6.3.0
     eslint: ^8.47.0
@@ -15540,6 +15549,13 @@ __metadata:
   version: 0.0.6
   resolution: "typedarray@npm:0.0.6"
   checksum: 33b39f3d0e8463985eeaeeacc3cb2e28bc3dfaf2a5ed219628c0b629d5d7b810b0eb2165f9f607c34871d5daa92ba1dc69f49051cf7d578b4cbd26c340b9d1b1
+  languageName: node
+  linkType: hard
+
+"typeface-noto-sans-kr@npm:^1.1.13":
+  version: 1.1.13
+  resolution: "typeface-noto-sans-kr@npm:1.1.13"
+  checksum: b9103955e74e8905f3fa6ae7e474d59e94110fe5f48eecc9181c62c68bc19e6e398b62c66a134e447f9392f548398b693cfcef02c1a90791683b4ca2e9ce0cdf
   languageName: node
   linkType: hard
 

@@ -27,7 +27,7 @@ interface IndexProps {
 const Index = ({ data: { site }, location }: PageProps<IndexProps>) => {
   return (
     <Layout location={location}>
-      <p>블로그 컨텐츠 내용</p>
+      <p className="dark">블로그 컨텐츠 내용</p>
     </Layout>
   );
 };

@@ -38,6 +38,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         [null, {\
           "packageLocation": "./",\
           "packageDependencies": [\
+            ["@types/node", "npm:20.5.3"],\
             ["@typescript-eslint/eslint-plugin", "virtual:8583e4c83e0d97aa3ed42e5a61bd1fd25fc58f41d03284923d3f5c8884b1d5c9ddf1e40acad4643e51b31e4e658be4ef34a8603931677c470df75ae8210470c3#npm:6.3.0"],\
             ["@typescript-eslint/parser", "virtual:8583e4c83e0d97aa3ed42e5a61bd1fd25fc58f41d03284923d3f5c8884b1d5c9ddf1e40acad4643e51b31e4e658be4ef34a8603931677c470df75ae8210470c3#npm:6.3.0"],\
             ["eslint", "npm:8.47.0"],\
@@ -3983,6 +3984,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["prismjs", "npm:1.29.0"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:fb7385e026dd8d00dfa09e2f8352652f10b003ebe63b1a000b9c369233c803ded2cc0f4cbedcb747caaaf98984e2d04e79f2e57c6e648c7a09fe29594645bb2e#npm:18.2.0"],\
+            ["typeface-noto-sans-kr", "npm:1.1.13"],\
             ["typescript", "patch:typescript@npm%3A5.1.6#~builtin<compat/typescript>::version=5.1.6&hash=5da071"]\
           ],\
           "linkType": "SOFT"\
@@ -5521,6 +5523,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-node-npm-20.5.0-ea170d5dd7-659bc5fc93.zip/node_modules/@types/node/",\
           "packageDependencies": [\
             ["@types/node", "npm:20.5.0"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:20.5.3", {\
+          "packageLocation": "./.yarn/cache/@types-node-npm-20.5.3-0fbe0d810f-fe67a0fd74.zip/node_modules/@types/node/",\
+          "packageDependencies": [\
+            ["@types/node", "npm:20.5.3"]\
           ],\
           "linkType": "HARD"\
         }],\
@@ -16632,6 +16641,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["playground", "workspace:."],\
+            ["@types/node", "npm:20.5.3"],\
             ["@typescript-eslint/eslint-plugin", "virtual:8583e4c83e0d97aa3ed42e5a61bd1fd25fc58f41d03284923d3f5c8884b1d5c9ddf1e40acad4643e51b31e4e658be4ef34a8603931677c470df75ae8210470c3#npm:6.3.0"],\
             ["@typescript-eslint/parser", "virtual:8583e4c83e0d97aa3ed42e5a61bd1fd25fc58f41d03284923d3f5c8884b1d5c9ddf1e40acad4643e51b31e4e658be4ef34a8603931677c470df75ae8210470c3#npm:6.3.0"],\
             ["eslint", "npm:8.47.0"],\
@@ -20192,6 +20202,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["typedarray-to-buffer", "npm:3.1.5"],\
             ["is-typedarray", "npm:1.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["typeface-noto-sans-kr", [\
+        ["npm:1.1.13", {\
+          "packageLocation": "./.yarn/cache/typeface-noto-sans-kr-npm-1.1.13-62c6c95e3c-b9103955e7.zip/node_modules/typeface-noto-sans-kr/",\
+          "packageDependencies": [\
+            ["typeface-noto-sans-kr", "npm:1.1.13"]\
           ],\
           "linkType": "HARD"\
         }]\
