@@ -2,19 +2,58 @@ import { Link, graphql } from 'gatsby';
 import * as React from 'react';
 
 import Layout from '@/components/Layout';
-import Seo from '@/components/Seo';
 
-const BlogPostTemplate = ({ previous, next, site, markdownRemark: post }, location) => {
+interface BlogPostTemplateProps {
+  data: {
+    site: {
+      siteMetadata: {
+        title: string;
+      };
+    };
+    current: {
+      id: string;
+      excerpt: string;
+      html: string;
+      frontmatter: {
+        title: string;
+        date: string;
+        description: string;
+      };
+    };
+    previous: {
+      fields: {
+        slug: string;
+      };
+      frontmatter: {
+        title: string;
+      };
+    };
+    next: {
+      fields: {
+        slug: string;
+      };
+      frontmatter: {
+        title: string;
+      };
+    };
+  };
+  location: Location;
+}
+
+const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({
+  data: { site, current, previous, next },
+  location,
+}) => {
   const siteTitle = site.siteMetadata?.title || `Title`;
 
   return (
     <Layout location={location} title={siteTitle}>
       <article className="blog-post" itemScope itemType="http://schema.org/Article">
         <header>
-          <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <p>{post.frontmatter.date}</p>
+          <h1 itemProp="headline">{current.frontmatter.title}</h1>
+          <p>{current.frontmatter.date}</p>
         </header>
-        <section dangerouslySetInnerHTML={{ __html: post.html }} itemProp="articleBody" />
+        <section dangerouslySetInnerHTML={{ __html: current.html }} itemProp="articleBody" />
         <hr />
       </article>
       <nav className="blog-post-nav">
@@ -47,15 +86,6 @@ const BlogPostTemplate = ({ previous, next, site, markdownRemark: post }, locati
   );
 };
 
-export const Head = ({ data: { markdownRemark: post } }) => {
-  return (
-    <Seo
-      title={post.frontmatter.title}
-      description={post.frontmatter.description || post.excerpt}
-    />
-  );
-};
-
 export default BlogPostTemplate;
 
 export const pageQuery = graphql`
@@ -65,13 +95,13 @@ export const pageQuery = graphql`
         title
       }
     }
-    markdownRemark(id: { eq: $id }) {
+    current: markdownRemark(id: { eq: $id }) {
       id
       excerpt(pruneLength: 160)
       html
       frontmatter {
         title
-        date(formatString: "MMMM DD, YYYY")
+        date(formatString: "YYYY.MM.DD")
         description
       }
     }

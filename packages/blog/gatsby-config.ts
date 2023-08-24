@@ -9,6 +9,10 @@ const config: GatsbyConfig = {
   },
   plugins: [
     `gatsby-plugin-image`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-vanilla-extract`,
+    `gatsby-plugin-typescript`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -43,8 +47,6 @@ const config: GatsbyConfig = {
         ],
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-feed`,
       options: {
@@ -94,7 +96,6 @@ const config: GatsbyConfig = {
         ],
       },
     },
-    `gatsby-plugin-vanilla-extract`,
   ],
 };
 

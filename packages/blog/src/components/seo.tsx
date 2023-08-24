@@ -1,5 +1,4 @@
 import { useStaticQuery, graphql } from 'gatsby';
-import React from 'react';
 
 import type { PropsWithChildren } from 'react';
 

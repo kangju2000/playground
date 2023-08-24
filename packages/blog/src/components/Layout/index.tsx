@@ -1,5 +1,4 @@
 import { Link, PageProps } from 'gatsby';
-import React from 'react';
 
 import { header } from './index.css';
 
