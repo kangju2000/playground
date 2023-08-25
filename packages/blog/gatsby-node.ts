@@ -3,15 +3,12 @@ import path from 'path';
 
 import type { GatsbyNode } from 'gatsby';
 
-// Define the template for blog post
-const blogPost = path.resolve(`./src/templates/post.tsx`);
-
 export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
   // Get all markdown blog posts sorted by date
   const result: {
-    errors?: any;
+    errors?: Error;
     data?: {
       allMarkdownRemark: {
         edges: {
@@ -36,7 +33,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
     };
   } = await graphql(`
     {
-      allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }, limit: 1000) {
+      allMarkdownRemark(sort: { frontmatter: { date: DESC } }, limit: 1000) {
         edges {
           node {
             id
@@ -65,6 +62,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
   }
 
   const edges = result.data.allMarkdownRemark.edges;
+  const blogPost = path.resolve(`./src/templates/post.tsx`);
 
   edges.forEach(({ node, next, previous }) => {
     createPage({
@@ -72,8 +70,8 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
       component: blogPost,
       context: {
         id: node.id,
-        previousPostId: previous.fields.slug ?? '',
-        nextPostId: next.fields.slug ?? '',
+        previousPostId: previous?.fields.slug ?? '',
+        nextPostId: next?.fields.slug ?? '',
       },
     });
   });
