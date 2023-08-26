@@ -2,7 +2,7 @@
   "name": "playground",
   "packageManager": "yarn@3.6.1",
   "scripts": {
-    "design-system": "yarn workspace @kangju2000/design-system",
+    "react": "yarn workspace @kangju2000/react",
     "blog": "yarn workspace @kangju2000/blog",
     "lint": "eslint ./packages --ext .ts,.tsx,.js,.jsx --cache"
   },

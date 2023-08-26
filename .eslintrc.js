@@ -75,11 +75,11 @@ module.exports = {
       },
     },
     {
-      files: ['packages/design-system/**/*.ts?(x)'],
+      files: ['packages/react/**/*.ts?(x)'],
       settings: {
         'import/resolver': {
           typescript: {
-            project: './packages/design-system/tsconfig.json',
+            project: './packages/react/tsconfig.json',
           },
         },
       },
