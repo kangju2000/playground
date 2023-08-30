@@ -7,7 +7,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 type Story = StoryObj<typeof Button>;
 
 export const Default: Story = {
-  render: () => <Button>Default</Button>,
+  render: () => <Button>Hello 🐼!</Button>,
 };
 
 export default {
