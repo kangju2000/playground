@@ -1,5 +1,6 @@
-import { type PageProps, graphql, Link } from 'gatsby';
+import { type PageProps, graphql } from 'gatsby';
 
+import Card from '@/components/Card';
 import Layout from '@/components/Layout';
 
 interface IndexProps {
@@ -30,17 +31,16 @@ const Index = ({ data, location }: PageProps<IndexProps>) => {
   const posts = data.allMarkdownRemark.edges;
   return (
     <Layout location={location}>
-      <p className="dark">블로그 컨텐츠 내용</p>
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug;
-        console.log(node);
         return (
-          <div key={node.fields.slug}>
-            <Link to={node.fields.slug}>
-              <span>{node.frontmatter.date}</span>
-              <span>{title}</span>
-            </Link>
-          </div>
+          <Card
+            key={node.id}
+            title={title}
+            date={node.frontmatter.date}
+            excerpt={node.excerpt}
+            slug={node.fields.slug}
+          />
         );
       })}
     </Layout>

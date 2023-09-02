@@ -7436,6 +7436,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@vanilla-extract/css", "npm:1.12.0"],\
             ["@vanilla-extract/recipes", "virtual:fb7385e026dd8d00dfa09e2f8352652f10b003ebe63b1a000b9c369233c803ded2cc0f4cbedcb747caaaf98984e2d04e79f2e57c6e648c7a09fe29594645bb2e#npm:0.5.0"],\
             ["@vanilla-extract/webpack-plugin", "virtual:fb7385e026dd8d00dfa09e2f8352652f10b003ebe63b1a000b9c369233c803ded2cc0f4cbedcb747caaaf98984e2d04e79f2e57c6e648c7a09fe29594645bb2e#npm:2.2.0"],\
+            ["classnames", "npm:2.3.2"],\
             ["gatsby", "virtual:fb7385e026dd8d00dfa09e2f8352652f10b003ebe63b1a000b9c369233c803ded2cc0f4cbedcb747caaaf98984e2d04e79f2e57c6e648c7a09fe29594645bb2e#npm:5.11.0"],\
             ["gatsby-plugin-alias-imports", "virtual:fb7385e026dd8d00dfa09e2f8352652f10b003ebe63b1a000b9c369233c803ded2cc0f4cbedcb747caaaf98984e2d04e79f2e57c6e648c7a09fe29594645bb2e#npm:1.0.5"],\
             ["gatsby-plugin-feed", "virtual:fb7385e026dd8d00dfa09e2f8352652f10b003ebe63b1a000b9c369233c803ded2cc0f4cbedcb747caaaf98984e2d04e79f2e57c6e648c7a09fe29594645bb2e#npm:5.11.0"],\
@@ -14958,6 +14959,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/ci-info-npm-3.8.0-d56a0b67d6-d0a4d31604.zip/node_modules/ci-info/",\
           "packageDependencies": [\
             ["ci-info", "npm:3.8.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["classnames", [\
+        ["npm:2.3.2", {\
+          "packageLocation": "./.yarn/cache/classnames-npm-2.3.2-d2fdae468d-2c62199789.zip/node_modules/classnames/",\
+          "packageDependencies": [\
+            ["classnames", "npm:2.3.2"]\
           ],\
           "linkType": "HARD"\
         }]\
