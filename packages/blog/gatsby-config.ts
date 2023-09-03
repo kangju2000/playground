@@ -1,5 +1,14 @@
 import type { GatsbyConfig } from 'gatsby';
 
+const wrapESMPlugin = (name) =>
+  function wrapESM(opts) {
+    return async (...args) => {
+      const mod = await import(name);
+      const plugin = mod.default(opts);
+      return plugin(...args);
+    };
+  };
+
 const config: GatsbyConfig = {
   graphqlTypegen: true,
   siteMetadata: {
@@ -13,6 +22,7 @@ const config: GatsbyConfig = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-vanilla-extract`,
     `gatsby-plugin-typescript`,
+    `gatsby-plugin-mdx-frontmatter`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -28,9 +38,10 @@ const config: GatsbyConfig = {
       },
     },
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: `gatsby-plugin-mdx`,
       options: {
-        plugins: [
+        extensions: [`.md`, `.mdx`],
+        gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-images`,
             options: {
@@ -45,6 +56,9 @@ const config: GatsbyConfig = {
           },
           `gatsby-remark-prismjs`,
         ],
+        mdxOptions: {
+          rehypePlugins: [wrapESMPlugin(`rehype-slug`)],
+        },
       },
     },
     {
@@ -64,9 +78,10 @@ const config: GatsbyConfig = {
         `,
         feeds: [
           {
-            serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.nodes.map((node: any) => {
+            serialize: ({ query: { site, allMdx } }) => {
+              return allMdx.nodes.map((node: any) => {
                 return Object.assign({}, node.frontmatter, {
+                  title: node.frontmatter.title,
                   description: node.excerpt,
                   date: node.frontmatter.date,
                   url: site.siteMetadata.siteUrl + node.fields.slug,
@@ -76,7 +91,7 @@ const config: GatsbyConfig = {
               });
             },
             query: `{
-              allMarkdownRemark(sort: {frontmatter: {date: DESC}}) {
+              allMdx(sort: {frontmatter: {date: DESC}}) {
                 nodes {
                   excerpt
                   html

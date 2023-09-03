@@ -1,55 +1,94 @@
-import { createFilePath } from 'gatsby-source-filesystem';
 import path from 'path';
+import readingTime from 'reading-time';
 
-import type { GatsbyNode } from 'gatsby';
+import type { AllMdx } from './src/types';
+import type { Actions, GatsbyNode } from 'gatsby';
+interface CreatePostsProps {
+  createPage: Actions['createPage'];
+  nodes: AllMdx['nodes'];
+}
+const createPosts = async ({ createPage, nodes }: CreatePostsProps) => {
+  const posts = path.resolve(`./src/templates/AllPostPage/index.tsx`);
+
+  const categorySet = new Set(['All']);
+
+  const edgesWithMap = nodes.map(({ mdxContent }) => {
+    const { categories } = mdxContent.frontmatter;
+    const categoriesArr = categories.split(' ');
+    const categoriesMap = categoriesArr.reduce(
+      (acc, category) => {
+        acc[category] = true;
+        return acc;
+      },
+      {} as Record<string, boolean>
+    );
+
+    return { ...mdxContent, categoriesMap };
+  });
+
+  edgesWithMap.forEach((edge) => {
+    const postCategories = Object.keys(edge.categoriesMap);
+    postCategories.forEach((category) => category !== 'featured' && categorySet.add(category));
+  });
+
+  const categories = [...categorySet];
+
+  createPage({
+    path: `/posts`,
+    component: posts,
+    context: { currentCategory: 'All', nodes, categories },
+  });
+
+  categories.forEach((currentCategory) => {
+    createPage({
+      path: `/posts/${currentCategory}`,
+      component: posts,
+      context: {
+        currentCategory,
+        categories,
+        nodes: edgesWithMap.filter((edge) => edge.categoriesMap[currentCategory]),
+      },
+    });
+  });
+};
+
+const createPost = async ({ createPage, nodes }: CreatePostsProps) => {
+  const post = path.resolve(`./src/templates/PostPage/index.tsx`);
+
+  nodes.forEach(({ mdxContent, internal }) => {
+    createPage({
+      path: mdxContent.frontmatter.slug,
+      component: `${post}?__contentFilePath=${internal.contentFilePath}`,
+      context: {
+        id: mdxContent.id,
+      },
+    });
+  });
+};
 
 export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
-  // Get all markdown blog posts sorted by date
   const result: {
     errors?: Error;
     data?: {
-      allMarkdownRemark: {
-        edges: {
-          node: {
-            id: string;
-            fields: {
-              slug: string;
-            };
-          };
-          next: {
-            fields: {
-              slug: string;
-            };
-          };
-          previous: {
-            fields: {
-              slug: string;
-            };
-          };
-        }[];
-      };
+      allMdx: AllMdx;
     };
   } = await graphql(`
     {
-      allMarkdownRemark(sort: { frontmatter: { date: DESC } }, limit: 1000) {
-        edges {
-          node {
-            id
-            fields {
-              slug
-            }
+      allMdx {
+        nodes {
+          id
+          body
+          excerpt(pruneLength: 500)
+          frontmatter {
+            slug
+            categories
+            title
+            createdAt
           }
-          next {
-            fields {
-              slug
-            }
-          }
-          previous {
-            fields {
-              slug
-            }
+          internal {
+            contentFilePath
           }
         }
       }
@@ -61,70 +100,35 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
     return;
   }
 
-  const edges = result.data.allMarkdownRemark.edges;
-  const blogPost = path.resolve(`./src/templates/post.tsx`);
+  const nodes = result.data.allMdx.nodes;
 
-  edges.forEach(({ node, next, previous }) => {
-    createPage({
-      path: node.fields.slug,
-      component: blogPost,
-      context: {
-        id: node.id,
-        previousPostId: previous?.fields.slug ?? '',
-        nextPostId: next?.fields.slug ?? '',
-      },
-    });
-  });
+  createPosts({ createPage, nodes });
+  createPost({ createPage, nodes });
 };
 
-export const onCreateNode: GatsbyNode['onCreateNode'] = ({ node, actions, getNode }) => {
+export const onCreateNode: GatsbyNode['onCreateNode'] = ({ node, actions }) => {
   const { createNodeField } = actions;
-
-  if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode });
-
+  if (node.internal.type === `Mdx`) {
     createNodeField({
-      name: `slug`,
       node,
-      value,
+      name: `timeToRead`,
+      value: readingTime(node.body as string),
     });
   }
 };
 
 export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] = ({ actions }) => {
   const { createTypes } = actions;
+  const typeDefs = `
+  type MdxFrontmatter @infer {
+    type: String
+  }
 
-  createTypes(`
-    type SiteSiteMetadata {
-      author: Author
-      siteUrl: String
-      social: Social
-    }
-
-    type Author {
-      name: String
-      summary: String
-    }
-
-    type Social {
-      twitter: String
-    }
-
-    type MarkdownRemark implements Node {
-      frontmatter: Frontmatter
-      fields: Fields
-    }
-
-    type Frontmatter {
-      title: String
-      description: String
-      date: Date @dateformat
-    }
-
-    type Fields {
-      slug: String
-    }
-  `);
+  type Mdx implements Node @infer {
+    frontmatter: MdxFrontmatter
+  }
+  `;
+  createTypes(typeDefs);
 };
 
 export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({

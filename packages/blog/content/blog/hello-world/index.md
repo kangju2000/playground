@@ -1,7 +1,7 @@
 ---
 title: Hello World
-date: "2015.05.28"
-description: "Hello World"
+createdAt: "2015.05.28"
+categories: test
 ---
 
 This is my first post on my new fake blog! How exciting!
