@@ -6,7 +6,11 @@ export type Post = {
 
 export type AllMdx = {
   nodes: {
-    mdxContent: Mdx;
+    id: string;
+    frontmatter: Frontmatter;
+    excerpt: string;
+    body: string;
+    tableOfContents: string;
     internal: {
       contentFilePath: string;
     };
@@ -29,4 +33,5 @@ export type Frontmatter = {
 
 export type SiteMetadata = {
   title: string;
+  siteUrl: string;
 };

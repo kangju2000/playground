@@ -1,13 +1,20 @@
-import { graphql } from 'gatsby';
+import { PageProps, graphql } from 'gatsby';
 
 import Layout from '@/components/Layout';
 import Seo from '@/components/Seo';
+import { SiteMetadata } from '@/types';
 
-const NotFoundPage = ({ data }) => {
+interface NotFoundPageProps {
+  site: {
+    siteMetadata: SiteMetadata;
+  };
+}
+
+const NotFoundPage = ({ data, location }: PageProps<NotFoundPageProps>) => {
   const siteTitle = data.site.siteMetadata.title;
 
   return (
-    <Layout title={siteTitle}>
+    <Layout title={siteTitle} location={location}>
       <h1>404: Not Found</h1>
       <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
     </Layout>

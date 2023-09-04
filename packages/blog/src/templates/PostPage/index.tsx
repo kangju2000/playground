@@ -1,16 +1,13 @@
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import * as React from 'react';
 
 import Layout from '@/components/Layout';
-import { Post, SiteMetadata } from '@/types';
+import type { Post } from '@/types';
 
 interface PostPageProps {
   location: Location;
   data: {
-    site: { siteMetadata: SiteMetadata };
-    current: Post;
-    previous: Post;
-    next: Post;
+    post: Post;
   };
   pageContext: {
     readingTime: {
@@ -22,18 +19,15 @@ interface PostPageProps {
   };
 }
 
-const PostPage: React.FC<PostPageProps> = ({
-  location,
-  data: { site, current, previous, next },
-}) => {
-  const siteTitle = site.siteMetadata?.title || `Title`;
-
+const PostPage: React.FC<PostPageProps> = ({ location, data: { post } }) => {
+  // const siteTitle = site.siteMetadata?.title || `Title`;
+  console.log(post);
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout location={location}>
       <article className="blog-post" itemScope itemType="http://schema.org/Article">
         <header>
-          <h1 itemProp="headline">{current.frontmatter.title}</h1>
-          <p>{current.frontmatter.createdAt}</p>
+          <h1 itemProp="headline">{post.frontmatter.title}</h1>
+          <p>{post.frontmatter.createdAt}</p>
         </header>
         <hr />
       </article>
@@ -47,7 +41,7 @@ const PostPage: React.FC<PostPageProps> = ({
             padding: 0,
           }}
         >
-          <li>
+          {/* <li>
             {previous && (
               <Link to={previous.frontmatter.slug} rel="prev">
                 ← {previous.frontmatter.title}
@@ -60,7 +54,7 @@ const PostPage: React.FC<PostPageProps> = ({
                 {next.frontmatter.title} →
               </Link>
             )}
-          </li>
+          </li> */}
         </ul>
       </nav>
     </Layout>
@@ -70,7 +64,7 @@ const PostPage: React.FC<PostPageProps> = ({
 export default PostPage;
 
 export const pageQuery = graphql`
-  query PostPage($id: String!, $tags: [String!]!, $slug: String!) {
+  query PostPage($id: String!) {
     post: mdx(id: { eq: $id }) {
       frontmatter {
         slug

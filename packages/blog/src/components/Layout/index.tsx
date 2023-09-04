@@ -16,7 +16,7 @@ export default function Layout({
     <div>
       <header className={header}>
         <h1>{title}</h1>
-        <Link to={location.pathname}>Home</Link>
+        <Link to={location?.pathname}>Home</Link>
       </header>
       <main>{children}</main>
       <footer></footer>

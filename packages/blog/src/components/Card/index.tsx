@@ -12,7 +12,7 @@ interface CardProps {
 export default function Card({ title, date, excerpt, slug }: CardProps) {
   return (
     <div className={cardWrapper}>
-      <Link to={slug}>
+      <Link to={'/posts/' + slug}>
         <div className={cardTitle}>{title}</div>
         <p className={cardDescription} dangerouslySetInnerHTML={{ __html: excerpt }} />
         <span className={cardDate}>{date}</span>

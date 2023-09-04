@@ -2,30 +2,30 @@ import { type PageProps, graphql } from 'gatsby';
 
 import Card from '@/components/Card';
 import Layout from '@/components/Layout';
-import { AllMdx } from '@/types';
+import type { AllMdx, SiteMetadata } from '@/types';
 
 interface IndexProps {
   site: {
-    siteMetadata: {
-      title: string;
-    };
+    siteMetadata: SiteMetadata;
   };
   allMdx: AllMdx;
 }
 
 const Index = ({ data, location }: PageProps<IndexProps>) => {
+  console.log(data);
   const posts = data.allMdx.nodes;
+
   return (
     <Layout location={location}>
-      {posts.map(({ mdxContent }) => {
-        const title = mdxContent.frontmatter.title || mdxContent.frontmatter.slug;
+      {posts.map((node) => {
+        const title = node.frontmatter.title || node.frontmatter.slug;
         return (
           <Card
-            key={mdxContent.id}
+            key={node.id}
             title={title}
-            date={mdxContent.frontmatter.createdAt}
-            excerpt={mdxContent.excerpt}
-            slug={mdxContent.frontmatter.slug}
+            date={node.frontmatter.createdAt}
+            excerpt={node.excerpt}
+            slug={'/posts/' + node.frontmatter.slug}
           />
         );
       })}
@@ -36,7 +36,7 @@ const Index = ({ data, location }: PageProps<IndexProps>) => {
 export default Index;
 
 export const pageQuery = graphql`
-  {
+  query {
     site {
       siteMetadata {
         title

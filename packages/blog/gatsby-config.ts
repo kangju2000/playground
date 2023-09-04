@@ -1,13 +1,6 @@
-import type { GatsbyConfig } from 'gatsby';
+import { AllMdx, SiteMetadata } from './src/types';
 
-const wrapESMPlugin = (name) =>
-  function wrapESM(opts) {
-    return async (...args) => {
-      const mod = await import(name);
-      const plugin = mod.default(opts);
-      return plugin(...args);
-    };
-  };
+import type { GatsbyConfig } from 'gatsby';
 
 const config: GatsbyConfig = {
   graphqlTypegen: true,
@@ -21,8 +14,15 @@ const config: GatsbyConfig = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-vanilla-extract`,
-    `gatsby-plugin-typescript`,
     `gatsby-plugin-mdx-frontmatter`,
+    {
+      resolve: 'gatsby-plugin-typescript',
+      options: {
+        isTSX: true,
+        jsxPragma: `jsx`,
+        allExtensions: true,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -57,12 +57,13 @@ const config: GatsbyConfig = {
           `gatsby-remark-prismjs`,
         ],
         mdxOptions: {
-          rehypePlugins: [wrapESMPlugin(`rehype-slug`)],
+          rehypePlugins: [],
+          remarkPlugins: [],
         },
       },
     },
     {
-      resolve: `gatsby-plugin-feed`,
+      resolve: `gatsby-plugin-feed-mdx`,
       options: {
         query: `
           {
@@ -78,30 +79,31 @@ const config: GatsbyConfig = {
         `,
         feeds: [
           {
-            serialize: ({ query: { site, allMdx } }) => {
-              return allMdx.nodes.map((node: any) => {
+            serialize: ({
+              query: { site, allMdx },
+            }: {
+              query: { site: { siteMetadata: SiteMetadata }; allMdx: AllMdx };
+            }) => {
+              return allMdx.nodes.map((node) => {
                 return Object.assign({}, node.frontmatter, {
                   title: node.frontmatter.title,
                   description: node.excerpt,
-                  date: node.frontmatter.date,
-                  url: site.siteMetadata.siteUrl + node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + node.fields.slug,
-                  custom_elements: [{ 'content:encoded': node.html }],
+                  date: new Date(node.frontmatter.createdAt),
+                  url: `${site.siteMetadata.siteUrl}/posts/${node.frontmatter.slug}`,
+                  guid: `${site.siteMetadata.siteUrl}/posts/${node.frontmatter.slug}`,
+                  custom_elements: [{ 'content:encoded': node.body }],
                 });
               });
             },
             query: `{
               allMdx(sort: {frontmatter: {date: DESC}}) {
                 nodes {
-                  excerpt
-                  html
-                  fields {
-                    slug
-                  }
                   frontmatter {
                     title
-                    date
+                    createdAt
+                    slug
                   }
+                  body
                 }
               }
             }`,

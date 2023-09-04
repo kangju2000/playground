@@ -15,6 +15,7 @@ interface AllPostPageProps {
 const AllPostPage: React.FC<AllPostPageProps> = ({ pageContext }) => {
   const { nodes, currentCategory } = pageContext;
   const { categories } = pageContext;
+  console.log(pageContext);
 
   return (
     <div>
@@ -22,19 +23,19 @@ const AllPostPage: React.FC<AllPostPageProps> = ({ pageContext }) => {
       <ul>
         {categories.map((category, index) => (
           <li key={category}>
-            <a href={`/posts/${index ? category : ''}`}>{category}</a>
+            <a href={`/categories/${index ? category : ''}`}>{category}</a>
           </li>
         ))}
       </ul>
       <h1>{currentCategory}</h1>
       <ul>
-        {nodes.map(({ mdxContent }) => (
+        {nodes.map((node) => (
           <Card
-            key={mdxContent.frontmatter.slug}
-            slug={mdxContent.frontmatter.slug}
-            excerpt={mdxContent.excerpt}
-            date={mdxContent.frontmatter.createdAt}
-            title={mdxContent.frontmatter.title}
+            key={node.frontmatter.slug}
+            slug={node.frontmatter.slug}
+            excerpt={node.excerpt}
+            date={node.frontmatter.createdAt}
+            title={node.frontmatter.title}
           />
         ))}
       </ul>

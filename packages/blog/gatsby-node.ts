@@ -12,8 +12,8 @@ const createPosts = async ({ createPage, nodes }: CreatePostsProps) => {
 
   const categorySet = new Set(['All']);
 
-  const edgesWithMap = nodes.map(({ mdxContent }) => {
-    const { categories } = mdxContent.frontmatter;
+  const edgesWithMap = nodes.map((node) => {
+    const { categories } = node.frontmatter;
     const categoriesArr = categories.split(' ');
     const categoriesMap = categoriesArr.reduce(
       (acc, category) => {
@@ -23,7 +23,7 @@ const createPosts = async ({ createPage, nodes }: CreatePostsProps) => {
       {} as Record<string, boolean>
     );
 
-    return { ...mdxContent, categoriesMap };
+    return { ...node, categoriesMap };
   });
 
   edgesWithMap.forEach((edge) => {
@@ -34,14 +34,14 @@ const createPosts = async ({ createPage, nodes }: CreatePostsProps) => {
   const categories = [...categorySet];
 
   createPage({
-    path: `/posts`,
+    path: `/categories`,
     component: posts,
     context: { currentCategory: 'All', nodes, categories },
   });
 
   categories.forEach((currentCategory) => {
     createPage({
-      path: `/posts/${currentCategory}`,
+      path: `/categories/${currentCategory}`,
       component: posts,
       context: {
         currentCategory,
@@ -55,12 +55,14 @@ const createPosts = async ({ createPage, nodes }: CreatePostsProps) => {
 const createPost = async ({ createPage, nodes }: CreatePostsProps) => {
   const post = path.resolve(`./src/templates/PostPage/index.tsx`);
 
-  nodes.forEach(({ mdxContent, internal }) => {
+  nodes.forEach((node) => {
     createPage({
-      path: mdxContent.frontmatter.slug,
-      component: `${post}?__contentFilePath=${internal.contentFilePath}`,
+      path: `/posts/${node.frontmatter.slug}`,
+      component: `${post}?__contentFilePath=${node.internal.contentFilePath}`,
       context: {
-        id: mdxContent.id,
+        id: node.id,
+        slug: node.frontmatter.slug,
+        readingTime: readingTime(node.body),
       },
     });
   });
@@ -72,11 +74,11 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
   const result: {
     errors?: Error;
     data?: {
-      allMdx: AllMdx;
+      allPosts: AllMdx;
     };
   } = await graphql(`
-    {
-      allMdx {
+    query {
+      allPosts: allMdx {
         nodes {
           id
           body
@@ -100,7 +102,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
     return;
   }
 
-  const nodes = result.data.allMdx.nodes;
+  const nodes = result.data.allPosts.nodes;
 
   createPosts({ createPage, nodes });
   createPost({ createPage, nodes });
@@ -117,23 +119,10 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = ({ node, actions }) => {
   }
 };
 
-export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] = ({ actions }) => {
-  const { createTypes } = actions;
-  const typeDefs = `
-  type MdxFrontmatter @infer {
-    type: String
-  }
-
-  type Mdx implements Node @infer {
-    frontmatter: MdxFrontmatter
-  }
-  `;
-  createTypes(typeDefs);
-};
-
 export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({
   actions,
   plugins,
+  reporter,
 }) => {
   actions.setWebpackConfig({
     resolve: {
@@ -148,4 +137,6 @@ export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({
       }),
     ],
   });
+
+  reporter.info('webpack config is updated');
 };
