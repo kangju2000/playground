@@ -14,6 +14,7 @@ const config: GatsbyConfig = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-vanilla-extract`,
+    `babel-preset-gatsby`,
     `gatsby-plugin-mdx-frontmatter`,
     {
       resolve: 'gatsby-plugin-typescript',

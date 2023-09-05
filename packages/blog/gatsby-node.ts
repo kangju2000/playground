@@ -3,10 +3,12 @@ import readingTime from 'reading-time';
 
 import type { AllMdx } from './src/types';
 import type { Actions, GatsbyNode } from 'gatsby';
+
 interface CreatePostsProps {
   createPage: Actions['createPage'];
   nodes: AllMdx['nodes'];
 }
+
 const createPosts = async ({ createPage, nodes }: CreatePostsProps) => {
   const posts = path.resolve(`./src/templates/AllPostPage/index.tsx`);
 
@@ -58,7 +60,7 @@ const createPost = async ({ createPage, nodes }: CreatePostsProps) => {
   nodes.forEach((node) => {
     createPage({
       path: `/posts/${node.frontmatter.slug}`,
-      component: `${post}?__contentFilePath=${node.internal.contentFilePath}`,
+      component: `${post.trim()}?__contentFilePath=${node.internal.contentFilePath}`,
       context: {
         id: node.id,
         slug: node.frontmatter.slug,
