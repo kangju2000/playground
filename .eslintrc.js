@@ -84,5 +84,18 @@ module.exports = {
         },
       },
     },
+    {
+      files: ['packages/next-blog/**/*.ts?(x)'],
+      settings: {
+        'import/resolver': {
+          typescript: {
+            project: './packages/next-blog/tsconfig.json',
+          },
+        },
+      },
+      rules: {
+        '@typescript-eslint/no-explicit-any': 'warn',
+      },
+    },
   ],
 };

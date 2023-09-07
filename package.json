@@ -4,6 +4,7 @@
   "scripts": {
     "react": "yarn workspace @kangju2000/react",
     "blog": "yarn workspace @kangju2000/blog",
+    "next-blog": "yarn workspace @kangju2000/next-blog",
     "lint": "eslint ./packages --ext .ts,.tsx,.js,.jsx --cache"
   },
   "workspaces": [

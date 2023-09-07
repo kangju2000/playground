@@ -1,0 +1,26 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/"]
+    },
+    "incremental": true,
+    "esModuleInterop": true,
+    "jsx": "preserve",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "./src/**/*",
+    ".next/types/**/*.ts"
+, "app"  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "composite": true,
+  "declaration": true
+}
