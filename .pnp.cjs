@@ -8070,6 +8070,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/mdx", "npm:2.0.7"],\
             ["@types/node", "npm:20.5.9"],\
             ["@types/react", "npm:18.2.21"],\
+            ["@vanilla-extract/css", "npm:1.13.0"],\
+            ["@vanilla-extract/next-plugin", "virtual:df13d6da8115bfe1ff78062e8669f5b64897f3515a788dd921180cfee3f2f61acc859f8e1f3fc5e1f8bcc2848cf0d5c3e50ef34788627532291c1138910cccef#npm:2.3.0"],\
             ["gray-matter", "npm:4.0.3"],\
             ["next", "virtual:df13d6da8115bfe1ff78062e8669f5b64897f3515a788dd921180cfee3f2f61acc859f8e1f3fc5e1f8bcc2848cf0d5c3e50ef34788627532291c1138910cccef#npm:13.4.19"],\
             ["next-mdx-remote", "virtual:df13d6da8115bfe1ff78062e8669f5b64897f3515a788dd921180cfee3f2f61acc859f8e1f3fc5e1f8bcc2848cf0d5c3e50ef34788627532291c1138910cccef#npm:4.4.1"],\
@@ -13405,6 +13407,30 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@vanilla-extract/next-plugin", [\
+        ["npm:2.3.0", {\
+          "packageLocation": "./.yarn/cache/@vanilla-extract-next-plugin-npm-2.3.0-71e2231c34-0a680255f5.zip/node_modules/@vanilla-extract/next-plugin/",\
+          "packageDependencies": [\
+            ["@vanilla-extract/next-plugin", "npm:2.3.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:df13d6da8115bfe1ff78062e8669f5b64897f3515a788dd921180cfee3f2f61acc859f8e1f3fc5e1f8bcc2848cf0d5c3e50ef34788627532291c1138910cccef#npm:2.3.0", {\
+          "packageLocation": "./.yarn/__virtual__/@vanilla-extract-next-plugin-virtual-da14e59e94/0/cache/@vanilla-extract-next-plugin-npm-2.3.0-71e2231c34-0a680255f5.zip/node_modules/@vanilla-extract/next-plugin/",\
+          "packageDependencies": [\
+            ["@vanilla-extract/next-plugin", "virtual:df13d6da8115bfe1ff78062e8669f5b64897f3515a788dd921180cfee3f2f61acc859f8e1f3fc5e1f8bcc2848cf0d5c3e50ef34788627532291c1138910cccef#npm:2.3.0"],\
+            ["@types/next", null],\
+            ["@vanilla-extract/webpack-plugin", "virtual:da14e59e94e864241b1d1818160a8b6bb01dd7eff2c082265d32fd243bf020c0ed33682dfcc9fbe915fc7919320c93bbfa4487b22700b53bcf3e6a2188e7b759#npm:2.3.0"],\
+            ["browserslist", "npm:4.21.10"],\
+            ["next", "virtual:df13d6da8115bfe1ff78062e8669f5b64897f3515a788dd921180cfee3f2f61acc859f8e1f3fc5e1f8bcc2848cf0d5c3e50ef34788627532291c1138910cccef#npm:13.4.19"]\
+          ],\
+          "packagePeers": [\
+            "@types/next",\
+            "next"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@vanilla-extract/private", [\
         ["npm:1.0.3", {\
           "packageLocation": "./.yarn/cache/@vanilla-extract-private-npm-1.0.3-27ba5cf703-866a71ba68.zip/node_modules/@vanilla-extract/private/",\
@@ -13469,6 +13495,30 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@vanilla-extract/webpack-plugin", "npm:2.2.0"]\
           ],\
           "linkType": "SOFT"\
+        }],\
+        ["npm:2.3.0", {\
+          "packageLocation": "./.yarn/cache/@vanilla-extract-webpack-plugin-npm-2.3.0-683c8f0573-c5542af6bb.zip/node_modules/@vanilla-extract/webpack-plugin/",\
+          "packageDependencies": [\
+            ["@vanilla-extract/webpack-plugin", "npm:2.3.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:da14e59e94e864241b1d1818160a8b6bb01dd7eff2c082265d32fd243bf020c0ed33682dfcc9fbe915fc7919320c93bbfa4487b22700b53bcf3e6a2188e7b759#npm:2.3.0", {\
+          "packageLocation": "./.yarn/__virtual__/@vanilla-extract-webpack-plugin-virtual-6995168c56/0/cache/@vanilla-extract-webpack-plugin-npm-2.3.0-683c8f0573-c5542af6bb.zip/node_modules/@vanilla-extract/webpack-plugin/",\
+          "packageDependencies": [\
+            ["@vanilla-extract/webpack-plugin", "virtual:da14e59e94e864241b1d1818160a8b6bb01dd7eff2c082265d32fd243bf020c0ed33682dfcc9fbe915fc7919320c93bbfa4487b22700b53bcf3e6a2188e7b759#npm:2.3.0"],\
+            ["@types/webpack", null],\
+            ["@vanilla-extract/integration", "npm:6.2.1"],\
+            ["chalk", "npm:4.1.2"],\
+            ["debug", "virtual:feb0771c9f8eadaf509cfed41e14a8bebbea5442233275c1c87085111077a08ef71eb773b899665b154d8203a55a489610a54117ae059fce5f5b8b844493b1b1#npm:4.3.4"],\
+            ["loader-utils", "npm:2.0.4"],\
+            ["webpack", null]\
+          ],\
+          "packagePeers": [\
+            "@types/webpack",\
+            "webpack"\
+          ],\
+          "linkType": "HARD"\
         }],\
         ["virtual:fb7385e026dd8d00dfa09e2f8352652f10b003ebe63b1a000b9c369233c803ded2cc0f4cbedcb747caaaf98984e2d04e79f2e57c6e648c7a09fe29594645bb2e#npm:2.2.0", {\
           "packageLocation": "./.yarn/__virtual__/@vanilla-extract-webpack-plugin-virtual-e0089bba44/0/cache/@vanilla-extract-webpack-plugin-npm-2.2.0-165cad6546-3e1741062e.zip/node_modules/@vanilla-extract/webpack-plugin/",\

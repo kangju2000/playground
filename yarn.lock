@@ -3271,6 +3271,8 @@ __metadata:
     "@types/mdx": ^2.0.7
     "@types/node": ^20.5.9
     "@types/react": ^18.2.21
+    "@vanilla-extract/css": ^1.13.0
+    "@vanilla-extract/next-plugin": ^2.3.0
     gray-matter: ^4.0.3
     next: ^13.4.19
     next-mdx-remote: ^4.4.1
@@ -7374,6 +7376,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vanilla-extract/next-plugin@npm:^2.3.0":
+  version: 2.3.0
+  resolution: "@vanilla-extract/next-plugin@npm:2.3.0"
+  dependencies:
+    "@vanilla-extract/webpack-plugin": ^2.3.0
+    browserslist: ^4.19.1
+  peerDependencies:
+    next: ">=12.1.7"
+  checksum: 0a680255f509aeb80cbad78883e8d9c606d2168c09e63f2e3bea21b91418293a8173e1c9775c751f6e5dd3b12cc98c5a39e53fa2a731f7e1d8b9aabb1d6d4008
+  languageName: node
+  linkType: hard
+
 "@vanilla-extract/private@npm:^1.0.3":
   version: 1.0.3
   resolution: "@vanilla-extract/private@npm:1.0.3"
@@ -7415,6 +7429,20 @@ __metadata:
   peerDependencies:
     webpack: ^4.30.0 || ^5.20.2
   checksum: 3e1741062eb849192558718e85c99d2e1aeefab01f17863d2381d493ec337a1a5137b8aef7bb60687ad754facda184d15ba763231f7bdad307170761755abf67
+  languageName: node
+  linkType: hard
+
+"@vanilla-extract/webpack-plugin@npm:^2.3.0":
+  version: 2.3.0
+  resolution: "@vanilla-extract/webpack-plugin@npm:2.3.0"
+  dependencies:
+    "@vanilla-extract/integration": ^6.0.0
+    chalk: ^4.1.1
+    debug: ^4.3.1
+    loader-utils: ^2.0.0
+  peerDependencies:
+    webpack: ^4.30.0 || ^5.20.2
+  checksum: c5542af6bbd072a4f3cefaa3bbbd614c7898559a1eea9109537f0643ed0cdf1758509602a0fa46a1245e344a4b3b59c56a63295e285357dfdfc7b36adafade4e
   languageName: node
   linkType: hard
 
@@ -8812,7 +8840,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"browserslist@npm:^4.0.0, browserslist@npm:^4.14.5, browserslist@npm:^4.18.1, browserslist@npm:^4.21.4, browserslist@npm:^4.21.5, browserslist@npm:^4.21.7, browserslist@npm:^4.21.9, browserslist@npm:^4.6.6":
+"browserslist@npm:^4.0.0, browserslist@npm:^4.14.5, browserslist@npm:^4.18.1, browserslist@npm:^4.19.1, browserslist@npm:^4.21.4, browserslist@npm:^4.21.5, browserslist@npm:^4.21.7, browserslist@npm:^4.21.9, browserslist@npm:^4.6.6":
   version: 4.21.10
   resolution: "browserslist@npm:4.21.10"
   dependencies:
