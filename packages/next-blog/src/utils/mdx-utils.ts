@@ -7,9 +7,17 @@ import remarkToc from 'remark-toc'
 
 import type { Frontmatter, Post } from '@/types'
 
-export const POSTS_PATH = path.join(process.cwd(), 'contents')
+export const BLOG_POSTS_PATH = path.join(process.cwd(), 'contents/blog')
 
-export const postFilePaths = fs.readdirSync(POSTS_PATH).filter((path) => /\.mdx?$/.test(path))
+export const LOG_POSTS_PATH = path.join(process.cwd(), 'contents/log')
+
+export const blogPostFilePaths = fs
+  .readdirSync(BLOG_POSTS_PATH)
+  .filter((path) => /\.mdx?$/.test(path))
+
+export const logPostFilePaths = fs
+  .readdirSync(LOG_POSTS_PATH)
+  .filter((path) => /\.mdx?$/.test(path))
 
 export const sortPostsByDate = (posts: Post[]) => {
   return posts.sort((a, b) => {
@@ -20,22 +28,42 @@ export const sortPostsByDate = (posts: Post[]) => {
   })
 }
 
-export async function getPosts() {
-  const posts = await Promise.all(
-    postFilePaths.map(async (filePath) => {
-      return await getPost(filePath)
+export async function getAllPosts() {
+  const blogPosts = await getBlogPosts()
+  const logPosts = await getLogPosts()
+
+  return sortPostsByDate([...blogPosts, ...logPosts])
+}
+
+export async function getBlogPosts() {
+  const blogPosts = await Promise.all(
+    blogPostFilePaths.map(async (filePath) => {
+      return await getPost('blog', filePath)
     })
   )
 
-  return sortPostsByDate(posts)
+  return sortPostsByDate(blogPosts)
 }
 
-export async function getPost(filePath: string): Promise<Post<Frontmatter>> {
+export async function getLogPosts() {
+  const logPosts = await Promise.all(
+    logPostFilePaths.map(async (filePath) => {
+      return await getPost('log', filePath)
+    })
+  )
+
+  return sortPostsByDate(logPosts)
+}
+
+export async function getPost(type: 'blog' | 'log', filePath: string): Promise<Post<Frontmatter>> {
+  const POSTS_PATH = type === 'blog' ? BLOG_POSTS_PATH : LOG_POSTS_PATH
+
   const raw = await promises.readFile(path.join(POSTS_PATH, filePath), 'utf-8')
 
   const serialized = await serializeMDX<Frontmatter>(raw)
 
   return {
+    type,
     serialized,
     frontmatter: serialized.frontmatter,
   }
