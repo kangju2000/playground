@@ -7,7 +7,7 @@ import remarkToc from 'remark-toc'
 
 import type { Frontmatter, Post } from '@/types'
 
-export const BLOG_POSTS_PATH = path.join(process.cwd(), 'contents/blog')
+export const BLOG_POSTS_PATH = path.join(process.cwd(), 'contents/post')
 
 export const LOG_POSTS_PATH = path.join(process.cwd(), 'contents/log')
 
@@ -38,7 +38,7 @@ export async function getAllPosts() {
 export async function getBlogPosts() {
   const blogPosts = await Promise.all(
     blogPostFilePaths.map(async (filePath) => {
-      return await getPost('blog', filePath)
+      return await getPost('post', filePath)
     })
   )
 
@@ -55,8 +55,8 @@ export async function getLogPosts() {
   return sortPostsByDate(logPosts)
 }
 
-export async function getPost(type: 'blog' | 'log', filePath: string): Promise<Post<Frontmatter>> {
-  const POSTS_PATH = type === 'blog' ? BLOG_POSTS_PATH : LOG_POSTS_PATH
+export async function getPost(type: 'post' | 'log', filePath: string): Promise<Post<Frontmatter>> {
+  const POSTS_PATH = type === 'post' ? BLOG_POSTS_PATH : LOG_POSTS_PATH
 
   const raw = await promises.readFile(path.join(POSTS_PATH, filePath), 'utf-8')
 

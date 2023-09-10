@@ -8072,6 +8072,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react", "npm:18.2.21"],\
             ["@vanilla-extract/css", "npm:1.13.0"],\
             ["@vanilla-extract/next-plugin", "virtual:df13d6da8115bfe1ff78062e8669f5b64897f3515a788dd921180cfee3f2f61acc859f8e1f3fc5e1f8bcc2848cf0d5c3e50ef34788627532291c1138910cccef#npm:2.3.0"],\
+            ["classnames", "npm:2.3.2"],\
+            ["dayjs", "npm:1.11.9"],\
             ["gray-matter", "npm:4.0.3"],\
             ["next", "virtual:df13d6da8115bfe1ff78062e8669f5b64897f3515a788dd921180cfee3f2f61acc859f8e1f3fc5e1f8bcc2848cf0d5c3e50ef34788627532291c1138910cccef#npm:13.4.19"],\
             ["next-mdx-remote", "virtual:df13d6da8115bfe1ff78062e8669f5b64897f3515a788dd921180cfee3f2f61acc859f8e1f3fc5e1f8bcc2848cf0d5c3e50ef34788627532291c1138910cccef#npm:4.4.1"],\
@@ -16951,6 +16953,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["date-fns", "npm:2.30.0"],\
             ["@babel/runtime", "npm:7.22.10"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["dayjs", [\
+        ["npm:1.11.9", {\
+          "packageLocation": "./.yarn/cache/dayjs-npm-1.11.9-c47d327b7c-a4844d83dc.zip/node_modules/dayjs/",\
+          "packageDependencies": [\
+            ["dayjs", "npm:1.11.9"]\
           ],\
           "linkType": "HARD"\
         }]\

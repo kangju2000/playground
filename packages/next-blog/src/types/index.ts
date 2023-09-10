@@ -8,7 +8,7 @@ export type Frontmatter = {
 }
 
 export type Post<TFrontmatter = Frontmatter> = {
-  type: 'blog' | 'log'
+  type: 'post' | 'log'
   serialized: MDXRemoteSerializeResult
   frontmatter: TFrontmatter
 }
