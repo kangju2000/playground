@@ -1,18 +1,18 @@
 import { style } from '@vanilla-extract/css'
 
-export const wrapperStyle = style({
+export const wrapper = style({
   display: 'flex',
-  alignItems: 'end',
+  alignItems: 'flex-end',
   padding: '2rem',
   gap: '0.5rem',
 })
 
-export const titleStyle = style({
+export const title = style({
   fontSize: '1.5rem',
   fontWeight: 'bold',
 })
 
-export const dateStyle = style({
+export const date = style({
   fontSize: '0.875rem',
   color: '#666',
 })

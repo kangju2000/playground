@@ -8071,6 +8071,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:20.5.9"],\
             ["@types/react", "npm:18.2.21"],\
             ["@vanilla-extract/css", "npm:1.13.0"],\
+            ["@vanilla-extract/dynamic", "npm:2.0.3"],\
             ["@vanilla-extract/next-plugin", "virtual:df13d6da8115bfe1ff78062e8669f5b64897f3515a788dd921180cfee3f2f61acc859f8e1f3fc5e1f8bcc2848cf0d5c3e50ef34788627532291c1138910cccef#npm:2.3.0"],\
             ["classnames", "npm:2.3.2"],\
             ["dayjs", "npm:1.11.9"],\
@@ -13363,6 +13364,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["deepmerge", "npm:4.3.1"],\
             ["media-query-parser", "npm:2.0.2"],\
             ["outdent", "npm:0.8.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@vanilla-extract/dynamic", [\
+        ["npm:2.0.3", {\
+          "packageLocation": "./.yarn/cache/@vanilla-extract-dynamic-npm-2.0.3-5224c4cda8-9ad4068d7e.zip/node_modules/@vanilla-extract/dynamic/",\
+          "packageDependencies": [\
+            ["@vanilla-extract/dynamic", "npm:2.0.3"],\
+            ["@vanilla-extract/private", "npm:1.0.3"]\
           ],\
           "linkType": "HARD"\
         }]\

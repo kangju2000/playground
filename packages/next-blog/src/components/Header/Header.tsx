@@ -1,16 +1,25 @@
 import Link from 'next/link'
 
-import { header, mainTitle, wrapper } from './Header.css'
+import * as styles from './Header.css'
 
 export default function Header() {
   return (
-    <nav className={header}>
-      <div className={wrapper}>
-        <h1 className={mainTitle}>kangju.dev</h1>
-        <Link href="/">Home</Link>
-        <Link href="/post">Post</Link>
-        <Link href="/log">Log</Link>
-      </div>
-    </nav>
+    <header className={styles.container}>
+      <nav className={styles.nav}>
+        <h1 className={styles.mainTitle}>kangju.dev</h1>
+        <ul className={styles.list}>
+          <Link href="/">
+            <li>Home</li>
+          </Link>
+          <Link href="/post">
+            <li>Post</li>
+          </Link>
+          <Link href="/log">
+            <li>Log</li>
+          </Link>
+        </ul>
+        <div>light/dark</div>
+      </nav>
+    </header>
   )
 }

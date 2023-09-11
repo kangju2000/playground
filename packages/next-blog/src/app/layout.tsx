@@ -1,10 +1,10 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
 import localFont from 'next/font/local'
 
-import type { Metadata } from 'next'
+import * as styles from './styles.css'
+import { Header } from '@/components'
 
-const inter = Inter({ subsets: ['latin'] })
+import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'kangju.dev',
@@ -14,7 +14,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko" className={pretendard.className}>
-      <body className={inter.className}>{children}</body>
+      <body>
+        <Header />
+        <main className={styles.content}>{children}</main>
+      </body>
     </html>
   )
 }

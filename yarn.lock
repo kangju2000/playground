@@ -3272,6 +3272,7 @@ __metadata:
     "@types/node": ^20.5.9
     "@types/react": ^18.2.21
     "@vanilla-extract/css": ^1.13.0
+    "@vanilla-extract/dynamic": ^2.0.3
     "@vanilla-extract/next-plugin": ^2.3.0
     classnames: ^2.3.2
     dayjs: ^1.11.9
@@ -7333,6 +7334,15 @@ __metadata:
     media-query-parser: ^2.0.2
     outdent: ^0.8.0
   checksum: 35c88718d451cb71e16a2cc0ece045e51cc84f8da29f92c4cbd6bff333d2fd35a724e95c1affd9d9df9ac67c9a18a53853e79afb8bbae70f2396ba5bbece2b16
+  languageName: node
+  linkType: hard
+
+"@vanilla-extract/dynamic@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "@vanilla-extract/dynamic@npm:2.0.3"
+  dependencies:
+    "@vanilla-extract/private": ^1.0.3
+  checksum: 9ad4068d7e28361a7aca46b5f14094e74613428fb600e54227d8ba7a35926c0d7339de1876eb2b3563f6d97c0f08fa09d5ff597f76776f8edca37510165682b0
   languageName: node
   linkType: hard
 
