@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 import * as styles from './Header.css'
+import ThemeSwitch from '../ThemeSwitch/ThemeSwitch'
 
 export default function Header() {
   return (
@@ -18,7 +19,7 @@ export default function Header() {
             <li>Log</li>
           </Link>
         </ul>
-        <div>light/dark</div>
+        <ThemeSwitch />
       </nav>
     </header>
   )

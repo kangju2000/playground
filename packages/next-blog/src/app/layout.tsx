@@ -1,8 +1,8 @@
-import './globals.css'
 import localFont from 'next/font/local'
 
+import '@/styles/globals.css'
 import * as styles from './styles.css'
-import { Header } from '@/components'
+import { Header, ThemeProvider } from '@/components'
 
 import type { Metadata } from 'next'
 
@@ -13,10 +13,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ko" className={pretendard.className}>
+    <html lang="ko" className={pretendard.className} suppressHydrationWarning>
       <body>
-        <Header />
-        <main className={styles.content}>{children}</main>
+        <ThemeProvider>
+          <Header />
+          <main className={styles.content}>{children}</main>
+        </ThemeProvider>
       </body>
     </html>
   )
