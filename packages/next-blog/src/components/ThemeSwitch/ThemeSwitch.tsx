@@ -1,34 +1,37 @@
 'use client'
 
-import { useTheme } from 'next-themes'
-import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 import * as styles from './ThemeSwitch.css'
 import { Icon } from '@/components'
+import { toggleScheme } from '@/utils/colorScheme'
 
 const themes = {
-  light: {
+  dark: {
     id: 'sun',
     label: 'Light Mode',
   },
-  dark: {
+  light: {
     id: 'moon',
     label: 'Dark Mode',
   },
 }
 
-export default function ThemeSwitch() {
-  const { theme, setTheme, resolvedTheme } = useTheme()
+interface ThemeSwitchProps {
+  scheme: 'light' | 'dark'
+}
 
-  const [mounted, setMounted] = useState(false)
+export default function ThemeSwitch({ scheme }: ThemeSwitchProps) {
+  const router = useRouter()
 
-  useEffect(() => {
-    setMounted(true)
-  }, [])
+  const toggle = async () => {
+    await toggleScheme()
+    router.refresh()
+  }
 
   return (
-    <div onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} className={styles.wrapper}>
-      {mounted && <Icon id={resolvedTheme === 'dark' ? themes.light.id : themes.dark.id} />}
+    <div onClick={toggle} className={styles.wrapper}>
+      <Icon id={themes[scheme].id} />
     </div>
   )
 }

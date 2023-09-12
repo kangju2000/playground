@@ -1,8 +1,11 @@
+import cn from 'clsx'
 import localFont from 'next/font/local'
 
 import '@/styles/globals.css'
 import * as styles from './styles.css'
-import { Header, ThemeProvider } from '@/components'
+import { Header } from '@/components'
+import { darkTheme, lightTheme } from '@/styles/vars.css'
+import { getCurrentScheme } from '@/utils/colorScheme'
 
 import type { Metadata } from 'next'
 
@@ -11,14 +14,20 @@ export const metadata: Metadata = {
   description: '프론트엔드 개발자 강주혁의 블로그입니다.',
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const scheme = await getCurrentScheme()
+
   return (
-    <html lang="ko" className={pretendard.className} suppressHydrationWarning>
+    <html
+      lang="ko"
+      className={cn(pretendard.className, {
+        [darkTheme]: scheme === 'dark',
+        [lightTheme]: scheme === 'light',
+      })}
+    >
       <body>
-        <ThemeProvider>
-          <Header />
-          <main className={styles.content}>{children}</main>
-        </ThemeProvider>
+        <Header />
+        <main className={styles.content}>{children}</main>
       </body>
     </html>
   )

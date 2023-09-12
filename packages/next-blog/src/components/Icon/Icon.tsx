@@ -1,4 +1,4 @@
-import cx from 'classnames'
+import cn from 'clsx'
 
 import { icon } from './Icon.css'
 
@@ -24,7 +24,7 @@ export default function Icon({
       width={width}
       height={height}
       fill={fill}
-      className={cx(icon, className)}
+      className={cn(icon, className)}
       style={style}
       {...rest}
     >

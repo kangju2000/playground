@@ -1,9 +1,12 @@
 import Link from 'next/link'
 
 import * as styles from './Header.css'
-import ThemeSwitch from '../ThemeSwitch/ThemeSwitch'
+import { ThemeSwitch } from '@/components'
+import { getCurrentScheme } from '@/utils/colorScheme'
 
-export default function Header() {
+export default async function Header() {
+  const scheme = (await getCurrentScheme()) as 'light' | 'dark' | undefined
+
   return (
     <header className={styles.container}>
       <nav className={styles.nav}>
@@ -19,7 +22,7 @@ export default function Header() {
             <li>Log</li>
           </Link>
         </ul>
-        <ThemeSwitch />
+        {scheme && <ThemeSwitch scheme={scheme} />}
       </nav>
     </header>
   )
