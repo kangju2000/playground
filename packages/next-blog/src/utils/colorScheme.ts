@@ -4,7 +4,7 @@ export const getCurrentScheme = async () => {
   if (typeof window === 'undefined') {
     const { cookies } = await import('next/headers')
 
-    return cookies().has('scheme') ? cookies().get('scheme')?.value : 'light'
+    return cookies().has('scheme') ? cookies().get('scheme')?.value : 'dark'
   }
 
   return getCookie('scheme', { path: '/' })
