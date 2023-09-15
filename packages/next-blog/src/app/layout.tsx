@@ -2,7 +2,7 @@ import cn from 'clsx'
 import localFont from 'next/font/local'
 
 import '@/styles/globals.css'
-import * as styles from './styles.css'
+import * as styles from './(home)/styles.css'
 import { Header } from '@/components'
 import { darkTheme, lightTheme } from '@/styles/vars.css'
 import { getCurrentScheme } from '@/utils/colorScheme'
