@@ -1,4 +1,4 @@
-import { globalStyle, style } from '@vanilla-extract/css'
+import { style } from '@vanilla-extract/css'
 
 export const container = style({
   position: 'sticky',
@@ -12,14 +12,23 @@ export const nav = style({
   alignItems: 'center',
   maxWidth: '43.75rem',
   height: '4rem',
-  padding: '1rem 0.5rem',
+  padding: '0.5rem 1.5rem',
   margin: '0 auto',
+  '@media': {
+    'screen and (max-width: 768px)': {
+      padding: '0.5rem 1rem',
+    },
+  },
 })
 
-export const mainTitle = style({
-  fontSize: '1.5rem',
-  fontWeight: 'bold',
-  marginRight: '1.5rem',
+export const avatar = style({
+  overflow: 'hidden',
+  borderRadius: '100%',
+  '@media': {
+    'screen and (max-width: 576px)': {
+      display: 'none',
+    },
+  },
 })
 
 export const list = style({
@@ -29,8 +38,19 @@ export const list = style({
   listStyle: 'none',
 })
 
-globalStyle(`${list} > a > li`, {
+export const listItem = style({
+  position: 'relative',
   padding: '0.5rem 1rem',
   fontSize: '.875rem',
   cursor: 'pointer',
+})
+
+export const underline = style({
+  position: 'absolute',
+  bottom: '0',
+  left: '0',
+  height: '1px',
+  width: '100%',
+  backgroundColor: 'white',
+  borderRadius: '.25rem',
 })
