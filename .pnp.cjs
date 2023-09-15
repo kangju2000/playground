@@ -6272,6 +6272,25 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@emotion/is-prop-valid", [\
+        ["npm:0.8.8", {\
+          "packageLocation": "./.yarn/cache/@emotion-is-prop-valid-npm-0.8.8-261a0f2426-bb7ec6d48c.zip/node_modules/@emotion/is-prop-valid/",\
+          "packageDependencies": [\
+            ["@emotion/is-prop-valid", "npm:0.8.8"],\
+            ["@emotion/memoize", "npm:0.7.4"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@emotion/memoize", [\
+        ["npm:0.7.4", {\
+          "packageLocation": "./.yarn/cache/@emotion-memoize-npm-0.7.4-5648cf11b8-4e3920d4ec.zip/node_modules/@emotion/memoize/",\
+          "packageDependencies": [\
+            ["@emotion/memoize", "npm:0.7.4"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@emotion/use-insertion-effect-with-fallbacks", [\
         ["npm:1.0.1", {\
           "packageLocation": "./.yarn/cache/@emotion-use-insertion-effect-with-fallbacks-npm-1.0.1-730758c66c-700b6e5bbb.zip/node_modules/@emotion/use-insertion-effect-with-fallbacks/",\
@@ -8076,6 +8095,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["clsx", "npm:2.0.0"],\
             ["cookies-next", "npm:4.0.0"],\
             ["dayjs", "npm:1.11.9"],\
+            ["framer-motion", "virtual:df13d6da8115bfe1ff78062e8669f5b64897f3515a788dd921180cfee3f2f61acc859f8e1f3fc5e1f8bcc2848cf0d5c3e50ef34788627532291c1138910cccef#npm:10.16.4"],\
             ["gray-matter", "npm:4.0.3"],\
             ["next", "virtual:df13d6da8115bfe1ff78062e8669f5b64897f3515a788dd921180cfee3f2f61acc859f8e1f3fc5e1f8bcc2848cf0d5c3e50ef34788627532291c1138910cccef#npm:13.4.19"],\
             ["next-mdx-remote", "virtual:df13d6da8115bfe1ff78062e8669f5b64897f3515a788dd921180cfee3f2f61acc859f8e1f3fc5e1f8bcc2848cf0d5c3e50ef34788627532291c1138910cccef#npm:4.4.1"],\
@@ -19828,6 +19848,34 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/fraction.js-npm-4.2.0-28efe4afc7-8c76a6e21d.zip/node_modules/fraction.js/",\
           "packageDependencies": [\
             ["fraction.js", "npm:4.2.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["framer-motion", [\
+        ["npm:10.16.4", {\
+          "packageLocation": "./.yarn/cache/framer-motion-npm-10.16.4-aea0dc4fd7-57eb252f25.zip/node_modules/framer-motion/",\
+          "packageDependencies": [\
+            ["framer-motion", "npm:10.16.4"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:df13d6da8115bfe1ff78062e8669f5b64897f3515a788dd921180cfee3f2f61acc859f8e1f3fc5e1f8bcc2848cf0d5c3e50ef34788627532291c1138910cccef#npm:10.16.4", {\
+          "packageLocation": "./.yarn/__virtual__/framer-motion-virtual-7191b646ed/0/cache/framer-motion-npm-10.16.4-aea0dc4fd7-57eb252f25.zip/node_modules/framer-motion/",\
+          "packageDependencies": [\
+            ["framer-motion", "virtual:df13d6da8115bfe1ff78062e8669f5b64897f3515a788dd921180cfee3f2f61acc859f8e1f3fc5e1f8bcc2848cf0d5c3e50ef34788627532291c1138910cccef#npm:10.16.4"],\
+            ["@emotion/is-prop-valid", "npm:0.8.8"],\
+            ["@types/react", "npm:18.2.21"],\
+            ["@types/react-dom", null],\
+            ["react", "npm:18.2.0"],\
+            ["react-dom", "virtual:df13d6da8115bfe1ff78062e8669f5b64897f3515a788dd921180cfee3f2f61acc859f8e1f3fc5e1f8bcc2848cf0d5c3e50ef34788627532291c1138910cccef#npm:18.2.0"],\
+            ["tslib", "npm:2.6.1"]\
+          ],\
+          "packagePeers": [\
+            "@types/react-dom",\
+            "@types/react",\
+            "react-dom",\
+            "react"\
           ],\
           "linkType": "HARD"\
         }]\
