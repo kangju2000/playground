@@ -8,6 +8,14 @@ const nextConfig = {
   experimental: {
     mdxRs: false,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '*',
+      },
+    ],
+  },
 }
 
 const withMDX = createMDX({
