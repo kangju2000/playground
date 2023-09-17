@@ -1,7 +1,9 @@
 'use client'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 
-const MdxComponents = {
+import type { MDXComponents } from 'mdx/types'
+
+const MdxComponents: MDXComponents = {
   /** h1 colored in yellow */
   h1: (props: React.HTMLProps<HTMLHeadingElement>) => (
     <h1 style={{ color: '#FFF676' }} {...props} />

@@ -1,3 +1,4 @@
+import dayjs from 'dayjs'
 import { sync } from 'fast-glob'
 import { promises } from 'fs'
 import { serialize } from 'next-mdx-remote/serialize'
@@ -62,7 +63,10 @@ export async function getPost(type: 'post' | 'log', filePath: string): Promise<P
   return {
     type,
     serialized,
-    frontmatter: serialized.frontmatter,
+    frontmatter: {
+      ...serialized.frontmatter,
+      date: dayjs(serialized.frontmatter.date).format('YYYY.MM.DD'),
+    },
     readingMinutes: readingTime(raw).minutes,
   }
 }
