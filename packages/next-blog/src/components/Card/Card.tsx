@@ -1,4 +1,4 @@
-import dayjs from 'dayjs'
+import Image from 'next/image'
 import Link from 'next/link'
 
 import * as styles from './Card.css'
@@ -14,8 +14,18 @@ export default function Card({ post }: CardProps) {
   return (
     <Link href={`/${type}/${frontmatter.slug}`}>
       <li className={styles.wrapper}>
-        <h2 className={styles.title}>{frontmatter.title}</h2>
-        <span className={styles.date}>{dayjs(frontmatter.date).format('YYYY-MM-DD')}</span>
+        <Image
+          src={frontmatter.thumbnail}
+          alt="thumbnail"
+          width={150}
+          height={150}
+          className={styles.thumbnail}
+        />
+        <div>
+          <h2 className={styles.title}>{frontmatter.title}</h2>
+          <p className={styles.description}>{frontmatter.description}</p>
+          <span className={styles.date}>{frontmatter.date}</span>
+        </div>
       </li>
     </Link>
   )
