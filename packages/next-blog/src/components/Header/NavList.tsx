@@ -13,6 +13,7 @@ interface NavListProps {
 
 export default function NavList({ links }: NavListProps) {
   const pathname = usePathname()
+  const currentType = `/${pathname.split('/')[1]}`
 
   return (
     <List
@@ -21,7 +22,7 @@ export default function NavList({ links }: NavListProps) {
       renderItem={(item) => (
         <li key={item.label} className={styles.listItem}>
           <Link href={item.href}>{item.label}</Link>
-          {pathname === item.href && (
+          {currentType === item.href && (
             <motion.span
               layoutId="underline"
               className={styles.underline}

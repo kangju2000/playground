@@ -23,12 +23,19 @@ export const nav = style({
 
 export const avatar = style({
   overflow: 'hidden',
-  borderRadius: '100%',
+  cursor: 'pointer',
   '@media': {
     'screen and (max-width: 576px)': {
       display: 'none',
     },
   },
+})
+
+export const avatarImage = style({
+  width: '2rem',
+  height: '2rem',
+  borderRadius: '50%',
+  objectFit: 'cover',
 })
 
 export const list = style({
@@ -41,7 +48,6 @@ export const list = style({
 export const listItem = style({
   position: 'relative',
   padding: '0.5rem 1rem',
-  fontSize: '.875rem',
   cursor: 'pointer',
 })
 
