@@ -2,6 +2,8 @@ import { sync } from 'fast-glob'
 import { promises } from 'fs'
 import { serialize } from 'next-mdx-remote/serialize'
 import path from 'path'
+import readingTime from 'reading-time'
+import rehypePrismPlus from 'rehype-prism-plus'
 import remarkBreaks from 'remark-breaks'
 import remarkGfm from 'remark-gfm'
 import remarkToc from 'remark-toc'
@@ -52,7 +54,7 @@ export async function getLogPosts() {
   return sortPostsByDate(logPosts)
 }
 
-export async function getPost(type: 'post' | 'log', filePath: string): Promise<Post<Frontmatter>> {
+export async function getPost(type: 'post' | 'log', filePath: string): Promise<Post> {
   const raw = await promises.readFile(filePath, 'utf-8')
 
   const serialized = await serializeMDX<Frontmatter>(raw)
@@ -61,6 +63,7 @@ export async function getPost(type: 'post' | 'log', filePath: string): Promise<P
     type,
     serialized,
     frontmatter: serialized.frontmatter,
+    readingMinutes: readingTime(raw).minutes,
   }
 }
 
@@ -69,6 +72,7 @@ export const serializeMDX = <TFrontmatter>(raw: string) => {
     parseFrontmatter: true,
     mdxOptions: {
       remarkPlugins: [remarkBreaks, remarkGfm, remarkToc],
+      rehypePlugins: [rehypePrismPlus],
       format: 'mdx',
     },
   })

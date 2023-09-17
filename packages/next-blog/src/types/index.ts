@@ -13,4 +13,5 @@ export type Post<TFrontmatter = Frontmatter> = {
   type: 'post' | 'log'
   serialized: MDXRemoteSerializeResult
   frontmatter: TFrontmatter
+  readingMinutes: number
 }

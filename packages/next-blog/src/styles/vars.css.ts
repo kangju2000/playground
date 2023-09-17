@@ -16,12 +16,12 @@ const colors = createThemeContract({
 
 export const lightTheme = createTheme(colors, {
   background: 'white',
-  text: 'black',
+  text: '#1A1A23',
 })
 
 export const darkTheme = createTheme(colors, {
-  background: 'black',
-  text: 'white',
+  background: '#1A1A23',
+  text: '#ededed',
 })
 
 export const vars = { ...global, colors }
