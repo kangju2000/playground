@@ -14,13 +14,8 @@
       }
     ]
   },
-  "include": [
-    "./src/**/*",
-    ".next/types/**/*.ts"
-, "app"  ],
-  "exclude": [
-    "node_modules"
-  ],
+  "include": ["./src/**/*", ".next/types/**/*.ts"],
+  "exclude": ["node_modules", ".next"],
   "composite": true,
   "declaration": true
 }

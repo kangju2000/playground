@@ -10,11 +10,16 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
   ],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    tsconfigRootDir: __dirname,
+    project: ['./tsconfig.base.json', './packages/*/tsconfig.json'],
+  },
   plugins: ['@typescript-eslint', 'prettier', 'import'],
   rules: {
     'prettier/prettier': ['error', { endOfLine: 'auto' }],
-    '@typescript-eslint/no-var-requires': 'warn',
-    '@typescript-eslint/no-unused-vars': ['error', { ignoreRestSiblings: true }],
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 'warn',
     '@typescript-eslint/naming-convention': [
       'error',
       {
@@ -49,53 +54,4 @@ module.exports = {
       },
     ],
   },
-  overrides: [
-    {
-      files: ['**/*.ts?(x)'],
-      parser: '@typescript-eslint/parser',
-      extends: [
-        'plugin:@typescript-eslint/eslint-recommended',
-        'plugin:@typescript-eslint/recommended',
-      ],
-      parserOptions: {
-        project: ['./packages/**/tsconfig.json'],
-      },
-    },
-    {
-      files: ['packages/blog/**/*.ts?(x)'],
-      settings: {
-        'import/resolver': {
-          typescript: {
-            project: './packages/blog/tsconfig.json',
-          },
-        },
-      },
-      rules: {
-        '@typescript-eslint/no-explicit-any': 'warn',
-      },
-    },
-    {
-      files: ['packages/react/**/*.ts?(x)'],
-      settings: {
-        'import/resolver': {
-          typescript: {
-            project: './packages/react/tsconfig.json',
-          },
-        },
-      },
-    },
-    {
-      files: ['packages/next-blog/**/*.ts?(x)'],
-      settings: {
-        'import/resolver': {
-          typescript: {
-            project: './packages/next-blog/tsconfig.json',
-          },
-        },
-      },
-      rules: {
-        '@typescript-eslint/no-explicit-any': 'warn',
-      },
-    },
-  ],
 }

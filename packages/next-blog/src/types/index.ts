@@ -5,6 +5,8 @@ export type Frontmatter = {
   date: string
   slug: string
   description: string
+  tags: string[]
+  thumbnail: string
 }
 
 export type Post<TFrontmatter = Frontmatter> = {

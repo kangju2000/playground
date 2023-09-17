@@ -8095,6 +8095,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["clsx", "npm:2.0.0"],\
             ["cookies-next", "npm:4.0.0"],\
             ["dayjs", "npm:1.11.9"],\
+            ["fast-glob", "npm:3.3.1"],\
             ["framer-motion", "virtual:df13d6da8115bfe1ff78062e8669f5b64897f3515a788dd921180cfee3f2f61acc859f8e1f3fc5e1f8bcc2848cf0d5c3e50ef34788627532291c1138910cccef#npm:10.16.4"],\
             ["gray-matter", "npm:4.0.3"],\
             ["next", "virtual:df13d6da8115bfe1ff78062e8669f5b64897f3515a788dd921180cfee3f2f61acc859f8e1f3fc5e1f8bcc2848cf0d5c3e50ef34788627532291c1138910cccef#npm:13.4.19"],\

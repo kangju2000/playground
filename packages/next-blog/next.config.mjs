@@ -1,4 +1,3 @@
-import createMDX from '@next/mdx'
 import { createVanillaExtractPlugin } from '@vanilla-extract/next-plugin'
 
 const withVanillaExtract = createVanillaExtractPlugin()
@@ -18,11 +17,4 @@ const nextConfig = {
   },
 }
 
-const withMDX = createMDX({
-  options: {
-    remarkPlugins: [],
-    rehypePlugins: [],
-  },
-})
-
-export default withMDX(withVanillaExtract(nextConfig))
+export default withVanillaExtract(nextConfig)

@@ -3293,6 +3293,7 @@ __metadata:
     clsx: ^2.0.0
     cookies-next: ^4.0.0
     dayjs: ^1.11.9
+    fast-glob: ^3.3.1
     framer-motion: ^10.16.4
     gray-matter: ^4.0.3
     next: ^13.4.19

@@ -1,4 +1,5 @@
-import fs, { promises } from 'fs'
+import { sync } from 'fast-glob'
+import { promises } from 'fs'
 import { serialize } from 'next-mdx-remote/serialize'
 import path from 'path'
 import remarkBreaks from 'remark-breaks'
@@ -10,14 +11,6 @@ import type { Frontmatter, Post } from '@/types'
 export const BLOG_POSTS_PATH = path.join(process.cwd(), 'contents/post')
 
 export const LOG_POSTS_PATH = path.join(process.cwd(), 'contents/log')
-
-export const blogPostFilePaths = fs
-  .readdirSync(BLOG_POSTS_PATH)
-  .filter((path) => /\.mdx?$/.test(path))
-
-export const logPostFilePaths = fs
-  .readdirSync(LOG_POSTS_PATH)
-  .filter((path) => /\.mdx?$/.test(path))
 
 export const sortPostsByDate = (posts: Post[]) => {
   return posts.sort((a, b) => {
@@ -36,8 +29,10 @@ export async function getAllPosts() {
 }
 
 export async function getBlogPosts() {
+  const paths = sync(`${BLOG_POSTS_PATH}/**/*.mdx`)
+
   const blogPosts = await Promise.all(
-    blogPostFilePaths.map(async (filePath) => {
+    paths.map(async (filePath) => {
       return await getPost('post', filePath)
     })
   )
@@ -46,8 +41,10 @@ export async function getBlogPosts() {
 }
 
 export async function getLogPosts() {
+  const paths = sync(`${LOG_POSTS_PATH}/**/*.mdx`)
+
   const logPosts = await Promise.all(
-    logPostFilePaths.map(async (filePath) => {
+    paths.map(async (filePath) => {
       return await getPost('log', filePath)
     })
   )
@@ -56,9 +53,7 @@ export async function getLogPosts() {
 }
 
 export async function getPost(type: 'post' | 'log', filePath: string): Promise<Post<Frontmatter>> {
-  const POSTS_PATH = type === 'post' ? BLOG_POSTS_PATH : LOG_POSTS_PATH
-
-  const raw = await promises.readFile(path.join(POSTS_PATH, filePath), 'utf-8')
+  const raw = await promises.readFile(filePath, 'utf-8')
 
   const serialized = await serializeMDX<Frontmatter>(raw)
 
@@ -74,7 +69,6 @@ export const serializeMDX = <TFrontmatter>(raw: string) => {
     parseFrontmatter: true,
     mdxOptions: {
       remarkPlugins: [remarkBreaks, remarkGfm, remarkToc],
-      rehypePlugins: [],
       format: 'mdx',
     },
   })
