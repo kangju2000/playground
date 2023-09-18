@@ -3,19 +3,26 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     },
     "incremental": true,
-    "esModuleInterop": true,
-    "jsx": "preserve",
     "plugins": [
       {
         "name": "next"
       }
-    ]
+    ],
+    "jsx": "preserve"
   },
-  "include": ["./src/**/*", ".next/types/**/*.ts"],
-  "exclude": ["node_modules", ".next"],
+  "include": [
+    "./src/**/*",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    ".next"
+  ],
   "composite": true,
   "declaration": true
 }
