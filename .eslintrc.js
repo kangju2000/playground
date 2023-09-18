@@ -1,4 +1,5 @@
 module.exports = {
+  root: true,
   env: {
     browser: true,
     es2021: true,
@@ -10,11 +11,6 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
   ],
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    tsconfigRootDir: __dirname,
-    project: ['./tsconfig.base.json', './packages/*/tsconfig.json'],
-  },
   plugins: ['@typescript-eslint', 'prettier', 'import'],
   rules: {
     'prettier/prettier': ['error', { endOfLine: 'auto' }],
@@ -54,4 +50,43 @@ module.exports = {
       },
     ],
   },
+  overrides: [
+    {
+      files: ['**/*.ts?(x)'],
+      parser: '@typescript-eslint/parser',
+      parserOptions: {
+        project: ['./packages/**/tsconfig.json'],
+      },
+    },
+    {
+      files: ['packages/blog/*.ts?(x)'],
+      settings: {
+        'import/resolver': {
+          typescript: {
+            project: `${__dirname}/packages/blog/tsconfig.json`,
+          },
+        },
+      },
+    },
+    {
+      files: ['packages/react/**/*.ts?(x)'],
+      settings: {
+        'import/resolver': {
+          typescript: {
+            project: `${__dirname}/packages/react/tsconfig.json`,
+          },
+        },
+      },
+    },
+    {
+      files: ['packages/next-blog/**/*.ts?(x)'],
+      settings: {
+        'import/resolver': {
+          typescript: {
+            project: `${__dirname}/packages/next-blog/tsconfig.json`,
+          },
+        },
+      },
+    },
+  ],
 }

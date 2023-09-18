@@ -1,24 +1,24 @@
-import { type PageProps, graphql } from 'gatsby';
+import { type PageProps, graphql } from 'gatsby'
 
-import Card from '@/components/Card';
-import Layout from '@/components/Layout';
-import type { AllMdx, SiteMetadata } from '@/types';
+import Card from '@/components/Card'
+import Layout from '@/components/Layout'
+import type { AllMdx, SiteMetadata } from '@/types'
 
 interface IndexProps {
   site: {
-    siteMetadata: SiteMetadata;
-  };
-  allMdx: AllMdx;
+    siteMetadata: SiteMetadata
+  }
+  allMdx: AllMdx
 }
 
 const Index = ({ data, location }: PageProps<IndexProps>) => {
-  console.log(data);
-  const posts = data.allMdx.nodes;
+  console.log(data)
+  const posts = data.allMdx.nodes
 
   return (
     <Layout location={location}>
       {posts.map((node) => {
-        const title = node.frontmatter.title || node.frontmatter.slug;
+        const title = node.frontmatter.title || node.frontmatter.slug
         return (
           <Card
             key={node.id}
@@ -27,13 +27,13 @@ const Index = ({ data, location }: PageProps<IndexProps>) => {
             excerpt={node.excerpt}
             slug={'/posts/' + node.frontmatter.slug}
           />
-        );
+        )
       })}
     </Layout>
-  );
-};
+  )
+}
 
-export default Index;
+export default Index
 
 export const pageQuery = graphql`
   query {
@@ -55,4 +55,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`

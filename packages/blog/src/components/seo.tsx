@@ -1,10 +1,10 @@
-import { useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby'
 
-import type { PropsWithChildren } from 'react';
+import type { PropsWithChildren } from 'react'
 
 interface SeoProps {
-  description?: string;
-  title: string;
+  description?: string
+  title: string
 }
 
 const Seo = ({ description, title, children }: PropsWithChildren<SeoProps>) => {
@@ -16,10 +16,10 @@ const Seo = ({ description, title, children }: PropsWithChildren<SeoProps>) => {
         }
       }
     }
-  `);
+  `)
 
-  const metaDescription = description || site.siteMetadata.description;
-  const defaultTitle = site.siteMetadata?.title;
+  const metaDescription = description || site.siteMetadata.description
+  const defaultTitle = site.siteMetadata?.title
 
   return (
     <>
@@ -30,7 +30,7 @@ const Seo = ({ description, title, children }: PropsWithChildren<SeoProps>) => {
       <meta property="og:type" content="website" />
       {children}
     </>
-  );
-};
+  )
+}
 
-export default Seo;
+export default Seo

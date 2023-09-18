@@ -1,4 +1,4 @@
-import { style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css'
 
 export const header = style({
   display: 'flex',
@@ -7,4 +7,4 @@ export const header = style({
   textAlign: 'center',
   fontSize: '1.5rem',
   border: '1px solid #ddd',
-});
+})

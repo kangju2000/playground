@@ -1,21 +1,21 @@
-import React from 'react';
+import React from 'react'
 
-import Card from '@/components/Card';
-import { AllMdx } from '@/types';
+import Card from '@/components/Card'
+import { AllMdx } from '@/types'
 
 interface AllPostPageProps {
-  location: Location;
+  location: Location
   pageContext: {
-    currentCategory: string;
-    categories: string[];
-    nodes: AllMdx['nodes'];
-  };
+    currentCategory: string
+    categories: string[]
+    nodes: AllMdx['nodes']
+  }
 }
 
 const AllPostPage: React.FC<AllPostPageProps> = ({ pageContext }) => {
-  const { nodes, currentCategory } = pageContext;
-  const { categories } = pageContext;
-  console.log(pageContext);
+  const { nodes, currentCategory } = pageContext
+  const { categories } = pageContext
+  console.log(pageContext)
 
   return (
     <div>
@@ -40,7 +40,7 @@ const AllPostPage: React.FC<AllPostPageProps> = ({ pageContext }) => {
         ))}
       </ul>
     </div>
-  );
-};
+  )
+}
 
-export default AllPostPage;
+export default AllPostPage

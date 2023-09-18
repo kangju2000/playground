@@ -1,4 +1,4 @@
-import { style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css'
 
 export const storybookButton = style({
   fontFamily: 'Nunito Sans , Helvetica Neue , Helvetica , Arial , sans-serif',
@@ -8,4 +8,4 @@ export const storybookButton = style({
   cursor: 'pointer',
   display: 'inline-block',
   backgroundColor: '#1ea7fd',
-});
+})

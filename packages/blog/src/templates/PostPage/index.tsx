@@ -1,27 +1,27 @@
-import { graphql } from 'gatsby';
-import * as React from 'react';
+import { graphql } from 'gatsby'
+import * as React from 'react'
 
-import Layout from '@/components/Layout';
-import type { Post } from '@/types';
+import Layout from '@/components/Layout'
+import type { Post } from '@/types'
 
 interface PostPageProps {
-  location: Location;
+  location: Location
   data: {
-    post: Post;
-  };
+    post: Post
+  }
   pageContext: {
     readingTime: {
-      minutes: number;
-      text: string;
-      time: number;
-      words: number;
-    };
-  };
+      minutes: number
+      text: string
+      time: number
+      words: number
+    }
+  }
 }
 
 const PostPage: React.FC<PostPageProps> = ({ location, data: { post } }) => {
   // const siteTitle = site.siteMetadata?.title || `Title`;
-  console.log(post);
+  console.log(post)
   return (
     <Layout location={location}>
       <article className="blog-post" itemScope itemType="http://schema.org/Article">
@@ -58,10 +58,10 @@ const PostPage: React.FC<PostPageProps> = ({ location, data: { post } }) => {
         </ul>
       </nav>
     </Layout>
-  );
-};
+  )
+}
 
-export default PostPage;
+export default PostPage
 
 export const pageQuery = graphql`
   query PostPage($id: String!) {
@@ -74,4 +74,4 @@ export const pageQuery = graphql`
       tableOfContents
     }
   }
-`;
+`

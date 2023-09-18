@@ -1,12 +1,12 @@
-import { Link } from 'gatsby';
+import { Link } from 'gatsby'
 
-import { cardDate, cardDescription, cardTitle, cardWrapper } from './index.css';
+import { cardDate, cardDescription, cardTitle, cardWrapper } from './index.css'
 
 interface CardProps {
-  title: string;
-  date: string;
-  excerpt: string;
-  slug: string;
+  title: string
+  date: string
+  excerpt: string
+  slug: string
 }
 
 export default function Card({ title, date, excerpt, slug }: CardProps) {
@@ -18,5 +18,5 @@ export default function Card({ title, date, excerpt, slug }: CardProps) {
         <span className={cardDate}>{date}</span>
       </Link>
     </div>
-  );
+  )
 }

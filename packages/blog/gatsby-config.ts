@@ -1,6 +1,6 @@
-import { AllMdx, SiteMetadata } from './src/types';
+import { AllMdx, SiteMetadata } from './src/types'
 
-import type { GatsbyConfig } from 'gatsby';
+import type { GatsbyConfig } from 'gatsby'
 
 const config: GatsbyConfig = {
   graphqlTypegen: true,
@@ -83,7 +83,7 @@ const config: GatsbyConfig = {
             serialize: ({
               query: { site, allMdx },
             }: {
-              query: { site: { siteMetadata: SiteMetadata }; allMdx: AllMdx };
+              query: { site: { siteMetadata: SiteMetadata }; allMdx: AllMdx }
             }) => {
               return allMdx.nodes.map((node) => {
                 return Object.assign({}, node.frontmatter, {
@@ -93,8 +93,8 @@ const config: GatsbyConfig = {
                   url: `${site.siteMetadata.siteUrl}/posts/${node.frontmatter.slug}`,
                   guid: `${site.siteMetadata.siteUrl}/posts/${node.frontmatter.slug}`,
                   custom_elements: [{ 'content:encoded': node.body }],
-                });
-              });
+                })
+              })
             },
             query: `{
               allMdx(sort: {frontmatter: {date: DESC}}) {
@@ -115,6 +115,6 @@ const config: GatsbyConfig = {
       },
     },
   ],
-};
+}
 
-export default config;
+export default config

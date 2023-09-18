@@ -1,29 +1,29 @@
 {
   "compilerOptions": {
-      "target": "ESNext",
-      "lib": ["DOM", "DOM.Iterable", "ESNext"],
-      "allowJs": true,
-      "skipLibCheck": false,
-      "esModuleInterop": true,
-      "strict": true,
-      "forceConsistentCasingInFileNames": true,
-      "module": "ESNext",
-      "moduleResolution": "Node",
-      "resolveJsonModule": true,
-      "isolatedModules": true,
-      "noEmit": true,
-      "jsx": "react-jsx",
+    "target": "ESNext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowJs": true,
+    "skipLibCheck": false,
+    "esModuleInterop": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+  },
+  "references": [
+    {
+      "path": "./packages/react"
     },
-    "include": ["./.eslintrc.js"],
-    "references": [
-      {
-        "path": "./packages/react"
-      },
-      {
-        "path": "./packages/blog"
-      },
-      {
-        "path": "./packages/next-blog"
-      }
-    ],
+    {
+      "path": "./packages/blog"
+    },
+    {
+      "path": "./packages/next-blog"
+    }
+  ],
+  "exclude": ["node_modules", "dist", "*.d.ts"]
 }
