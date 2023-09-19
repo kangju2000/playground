@@ -10,8 +10,10 @@ export type Frontmatter = {
 }
 
 export type Post<TFrontmatter = Frontmatter> = {
-  type: 'post' | 'log'
   serialized: MDXRemoteSerializeResult
   frontmatter: TFrontmatter
   readingMinutes: number
 }
+
+export type BlogPost = Post<Frontmatter>
+export type LogPost = Post<Partial<Frontmatter> & { title: string; date: string }>

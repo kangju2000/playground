@@ -9,13 +9,13 @@ import remarkBreaks from 'remark-breaks'
 import remarkGfm from 'remark-gfm'
 import remarkToc from 'remark-toc'
 
-import type { Frontmatter, Post } from '@/types'
+import type { BlogPost, LogPost } from '@/types'
 
 export const BLOG_POSTS_PATH = path.join(process.cwd(), 'contents/post')
 
 export const LOG_POSTS_PATH = path.join(process.cwd(), 'contents/log')
 
-export const sortPostsByDate = (posts: Post[]) => {
+export const sortPostsByDate = (posts: (BlogPost | LogPost)[]) => {
   return posts.sort((a, b) => {
     const aDate = new Date(a.frontmatter.date)
     const bDate = new Date(b.frontmatter.date)
@@ -24,19 +24,12 @@ export const sortPostsByDate = (posts: Post[]) => {
   })
 }
 
-export async function getAllPosts() {
-  const blogPosts = await getBlogPosts()
-  const logPosts = await getLogPosts()
-
-  return sortPostsByDate([...blogPosts, ...logPosts])
-}
-
 export async function getBlogPosts() {
   const paths = sync(`${BLOG_POSTS_PATH}/**/*.mdx`)
 
   const blogPosts = await Promise.all(
     paths.map(async (filePath) => {
-      return await getPost('post', filePath)
+      return await getPost(filePath)
     })
   )
 
@@ -48,24 +41,47 @@ export async function getLogPosts() {
 
   const logPosts = await Promise.all(
     paths.map(async (filePath) => {
-      return await getPost('log', filePath)
+      return await getLogPost(filePath)
     })
   )
 
   return sortPostsByDate(logPosts)
 }
 
-export async function getPost(type: 'post' | 'log', filePath: string): Promise<Post> {
+export async function getPost(filePath: string): Promise<BlogPost> {
   const raw = await promises.readFile(filePath, 'utf-8')
 
-  const serialized = await serializeMDX<Frontmatter>(raw)
+  const serialized = await serializeMDX<BlogPost['frontmatter']>(raw)
 
   return {
-    type,
     serialized,
     frontmatter: {
       ...serialized.frontmatter,
       date: dayjs(serialized.frontmatter.date).format('YYYY.MM.DD'),
+    },
+    readingMinutes: readingTime(raw).minutes,
+  }
+}
+
+export async function getLogPost(filePath: string): Promise<LogPost> {
+  const raw = await promises.readFile(filePath, 'utf-8')
+
+  const serialized = await serializeMDX<LogPost['frontmatter']>(raw)
+
+  const date = raw
+    .split('\n')
+    .find((line) => line.startsWith('#'))
+    ?.replace('# ', '')
+    .trim()
+
+  console.log(serialized.frontmatter)
+
+  return {
+    serialized,
+    frontmatter: {
+      ...serialized.frontmatter,
+      title: serialized.frontmatter.title || date || '',
+      date: date || '',
     },
     readingMinutes: readingTime(raw).minutes,
   }
