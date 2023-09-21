@@ -2,17 +2,17 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import * as styles from './Card.css'
-import { Post } from '@/types'
+import { BlogPost } from '@/types'
 
 interface CardProps {
-  post: Post
+  post: BlogPost
 }
 
 export default function Card({ post }: CardProps) {
-  const { frontmatter, type } = post
+  const { frontmatter } = post
 
   return (
-    <Link href={`/${type}/${frontmatter.slug}`}>
+    <Link href={`/post/${frontmatter.slug}`}>
       <li className={styles.wrapper}>
         <Image
           src={frontmatter.thumbnail}

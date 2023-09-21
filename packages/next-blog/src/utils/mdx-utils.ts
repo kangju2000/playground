@@ -15,7 +15,7 @@ export const BLOG_POSTS_PATH = path.join(process.cwd(), 'contents/post')
 
 export const LOG_POSTS_PATH = path.join(process.cwd(), 'contents/log')
 
-export const sortPostsByDate = (posts: (BlogPost | LogPost)[]) => {
+export const sortPostsByDate = <T extends BlogPost | LogPost>(posts: T[]) => {
   return posts.sort((a, b) => {
     const aDate = new Date(a.frontmatter.date)
     const bDate = new Date(b.frontmatter.date)
@@ -73,8 +73,6 @@ export async function getLogPost(filePath: string): Promise<LogPost> {
     .find((line) => line.startsWith('#'))
     ?.replace('# ', '')
     .trim()
-
-  console.log(serialized.frontmatter)
 
   return {
     serialized,

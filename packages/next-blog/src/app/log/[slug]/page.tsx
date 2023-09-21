@@ -11,7 +11,7 @@ interface PostPageProps {
 
 export default async function PostPage({ params: { slug } }: PropsWithChildren<PostPageProps>) {
   const posts = await getLogPosts()
-  const post = posts.find(({ frontmatter }) => encodeURI(frontmatter.slug) === slug)
+  const post = posts.find(({ frontmatter }) => encodeURI(frontmatter.date) === slug)
 
   if (!post) {
     return <div>Post not found</div>

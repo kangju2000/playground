@@ -9,7 +9,7 @@ export type Frontmatter = {
   thumbnail: string
 }
 
-export type Post<TFrontmatter = Frontmatter> = {
+export type Post<TFrontmatter> = {
   serialized: MDXRemoteSerializeResult
   frontmatter: TFrontmatter
   readingMinutes: number

@@ -18,7 +18,7 @@ export default async function PostPage({ params: { slug } }: PropsWithChildren<P
     return <div>Post not found</div>
   }
 
-  const { frontmatter, serialized, type, readingMinutes } = post
+  const { frontmatter, serialized, readingMinutes } = post
 
   return (
     <div className={styles.container}>
