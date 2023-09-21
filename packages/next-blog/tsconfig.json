@@ -3,7 +3,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     },
     "incremental": true,
     "plugins": [
@@ -11,10 +13,23 @@
         "name": "next"
       }
     ],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": ["./src/**/*", ".next/types/**/*.ts"],
-  "exclude": ["node_modules", ".next"],
-  "composite": true,
-  "declaration": true
+  "include": [
+    "./src/**/*",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    ".next"
+  ]
 }

@@ -1,6 +1,7 @@
 {
   "name": "@kangju2000/react",
   "version": "0.0.0",
+  "packageManager": "yarn@3.6.3",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
