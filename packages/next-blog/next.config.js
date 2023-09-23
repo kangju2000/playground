@@ -1,5 +1,5 @@
-import { createVanillaExtractPlugin } from '@vanilla-extract/next-plugin'
-import { withContentlayer } from 'next-contentlayer'
+const { createVanillaExtractPlugin } = require('@vanilla-extract/next-plugin')
+const { withContentlayer } = require('next-contentlayer')
 
 const withVanillaExtract = createVanillaExtractPlugin()
 
@@ -15,4 +15,4 @@ const nextConfig = {
   },
 }
 
-export default withContentlayer(withVanillaExtract(nextConfig))
+module.exports = withContentlayer(withVanillaExtract(nextConfig))

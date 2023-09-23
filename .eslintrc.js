@@ -21,6 +21,7 @@ module.exports = {
     'prettier/prettier': ['error', { endOfLine: 'auto' }],
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': 'warn',
+    '@typescript-eslint/no-var-requires': 'off',
     '@typescript-eslint/naming-convention': [
       'error',
       {
