@@ -3,6 +3,7 @@ import localFont from 'next/font/local'
 
 import '@/styles/globals.css'
 import '@/styles/prism.css'
+import Chakra from './chakra'
 import * as styles from './styles.css'
 import { Header } from '@/components'
 import { darkTheme, lightTheme } from '@/styles/vars.css'
@@ -26,10 +27,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         [lightTheme]: scheme === 'light',
       })}
     >
-      <body>
-        <Header />
-        <main className={styles.content}>{children}</main>
-      </body>
+      <Chakra>
+        <body>
+          <Header />
+          <main className={styles.content}>{children}</main>
+        </body>
+      </Chakra>
     </html>
   )
 }
